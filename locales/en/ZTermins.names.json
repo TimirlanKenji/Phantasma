@@ -9,6 +9,8 @@
    "MP":"SAN",
    "TP":"ADR",
    "EXPc":"EXP",
+   "Check0":" [check ",
+   "Check1":"]",
    "Health":"Health",
    "Attack":"Strength",
    "Attack Magic":"Wisdom",
@@ -113,7 +115,7 @@
    "System148":"%1 – й %2 fell!",
    "System149":"%1's %2 back to normal!",
    "System150":"Was ineffective against %1!",
-   "System151":"Leave menu",
+   "System151":"Leave",
    "System152":"SKIP TUTORIAL?",
    "System153":" dead!"
 }
