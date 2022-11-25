@@ -9,6 +9,8 @@
    "MP":"SAN",
    "TP":"ADR",
    "EXPc":"EXP",
+   "Success" : " SUCCESSFUL",
+   "Failure" : " FAILED",
    "Check0":" [check ",
    "Check1":"]",
    "Health":"Health",
