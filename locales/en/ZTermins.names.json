@@ -119,5 +119,18 @@
    "System150":"Was ineffective against %1!",
    "System151":"Leave",
    "System152":"SKIP TUTORIAL?",
-   "System153":" dead!"
+   "System153":" dead!",
+   "System154":"Battle Animation",
+   "System155":"Type in this character's name.",
+   "System156":"Press ENTER when you're done.",
+   "System157":"-or-",
+   "System158":"Press the arrow keys to switch",
+   "System159":"to manual character entry.",
+   "System160":"Press ESC to use to keyboard.",
+   "System161":"Load",
+   "System162":"Save",
+   "System163":"Delete",
+   "System164":"Playtime:",
+   "System165":"Total Saves:",
+   "System166":"Map location:"
 }
