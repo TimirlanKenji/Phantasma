@@ -55,7 +55,7 @@
    "Map06":"Six Floor",
    "Map07":"Seven Floor",
    "Map08":"Blue Room",
-   "Statistic":"Last summoned",
+   "Statistic":"Last test subject-",
    "Statistic1":"died on the",
    "Statistic2":"floor.",
    "Statistic3":"Total Death:",
@@ -132,5 +132,7 @@
    "System163":"Delete",
    "System164":"Playtime:",
    "System165":"Total Saves:",
-   "System166":"Map location:"
+   "System166":"Map location:",
+   "System167":"Game page",
+   "System168":"The link was blocked by a pop-up blocker"
 }
