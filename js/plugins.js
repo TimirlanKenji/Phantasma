@@ -14,6 +14,7 @@ var $plugins =
 {"name":"------------------------","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
 {"name":"-GAMEPLAY","status":false,"description":"","parameters":{}},
 {"name":"------------------------","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
+{"name":"YEP_WeaponUnleash","status":true,"description":"v1.05 Replace the Attack command or give it the option of\nhave a skill randomly occur when using it!","parameters":{}},
 {"name":"MOG_AnimatedText","status":true,"description":"(v1.3) Apresenta multiplos textos animados.","parameters":{"Letter Space X-Axis":"0","Letter Space Y-Axis":"0"}},
 {"name":"MOG_TreasurePopup","status":true,"description":"(v1.0) Apresenta o ícone e o nome do tesouro ganho.","parameters":{"Duration":"15","Fade Speed":"3","X - Axis":"0","Y - Axis":"0","Random Movement":"false","X Speed":"0","Y Speed":"1","Font Size":"20","Icon Scale":"1","Treasure Space Y-Axis":"20","Zoom Effect":"false","Gold Popup":"true","Gold Icon Index":"43"}},
 {"name":"SRD_FullscreenToggleOption","status":true,"description":"Adds a Fullscreen Toggle to the Options Window","parameters":{"Option Name":"{TextPlug-32}","Position":"Middle","Default Value":"false","Persist Default?":"false"}},
