@@ -84,6 +84,11 @@
    "Map16":"Sixteenth Floor",
    "Basement":"Basement",
    "SaveRoom":"Save Room",
+   "Drawers": "You see a metal drawer in front of you. It's locked tight, but you notice a small keyhole.",
+   "Drawers1": "Use small key?",
+   "Drawers2": "You insert the key into the keyhole and turn it. Something clicks and the key gets stuck in the hole. The drawer opens.",
+   "Drawers3": "Open top drawer?",
+   "Drawers4": "Open bottom drawer?",
    "Room":"Room",
    "Room01":"Room 1",
    "Room02":"Room 2",
@@ -183,7 +188,7 @@
    "System163":"Delete",
    "System164":"Playtime:",
    "System165":"Total Saves:",
-   "System166":"Map location:",
+   "System166":"Location:",
    "System167":"Game page",
    "System168":"The link was blocked by a pop-up blocker"
 }
