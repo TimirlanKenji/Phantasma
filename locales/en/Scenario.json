@@ -445,6 +445,8 @@
    "Puzzle7_16" : "Destroy the statue",
    "Puzzle7_17" : "Now it's just a pile of rocks.",
    "Puzzle7_18" : "The stone chalice is rapidly filling with something that looks like blood. A flesh-woven key emerges from the cold, viscous liquid to meet you.","Puzzle8_1" : "Use {Item41}",
+   "Puzzle8_2" : "This door is locked. The Celtic cross emblem is visible above the keyhole.",
+   "Puzzle8_3" : "Use {Item26}",
    "Regist1" : "                      Concierge<br>",
    "Regist2" : " Welcome to our hotel. To register a van, you need to answer a few questions. This is standard procedure, you don't have to worry.",
    "Regist3" : " And so, may I know your name?",
