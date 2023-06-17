@@ -75,5 +75,6 @@
    "D_SkillPerk12":"You use the interior and walls for the most successful evasion of enemy attacks (+3 critical. evasion)",
    "D_SkillPerk13":"You gain distance and push the enemy with your shoulder in a big way. This attack can knock the enemy to the floor (+80% bring down the enemy).",
    "D_SkillPerk14":"Now Strange meat will replenish your health by 5. But even you understand that it's not good to eat your own kind, so Max Sanity -2",
-   "D_SkillPerk15":"You remember that this has already happened to you. Now you are able to perform some actions reflexively."
+   "D_SkillPerk15":"You remember that this has already happened to you. Now you are able to perform some actions reflexively.",
+   "D_SkillPerk16": "During your stay at the hotel, you have encountered many horrors. But they are not able to shake your psyche. It becomes almost impossible to surprise you (+5 SAN forever)"
 }

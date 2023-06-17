@@ -61,6 +61,7 @@
    "Paralysis":"Paralysis",
    "Rage":"Fury",
    "":" + + + + +WEAPONS + + + + +",
+   "Crush":"Crush",
    "Cut":"Cut",
    "PoisonCut":"Poison cut",
    "Chop":"Chop",
@@ -80,5 +81,6 @@
    "SkillPerk12":"[Aquilibrist]",
    "SkillPerk13":"[Tough dash]",
    "SkillPerk14":"[Cannibal]",
-   "SkillPerk15":"[Deja vu?]"
+   "SkillPerk15":"[Deja vu?]",
+   "SkillPerk16":"[Nerves of Steel]"
 }
