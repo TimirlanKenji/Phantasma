@@ -580,6 +580,8 @@
    "Puzzle8_4" : "Invite to join",
    "Puzzle8_5" : "{Actor3} has joined the party!",
    "Puzzle8_6" : "{Actor3} left the squad!",
+   "Puzzle 9_1" : "The door is tightly closed. Instead of a keyhole, you notice a hole for letters.",
+   "Puzzle 9_2" : "Put in the hole {Item 29}?",
    "Regist1" : "                      Concierge<br>",
    "Regist2" : " Welcome to our hotel. To register a van, you need to answer a few questions. This is standard procedure, you don't have to worry.",
    "Regist3" : " And so, may I know your name?",
