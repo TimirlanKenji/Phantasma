@@ -85,6 +85,7 @@
    "Map16":"Sixteenth Floor",
    "Basement":"Basement",
    "SaveRoom":"Save Room",
+   "SecretRoom":"Secret room",
    "Drawers": "You see a metal drawer in front of you. It's locked tight, but you notice a small keyhole.",
    "Drawers1": "Use small key?",
    "Drawers2": "You insert the key into the keyhole and turn it. Something clicks and the key gets stuck in the hole. The drawer opens.",
