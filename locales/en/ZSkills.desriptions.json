@@ -60,6 +60,12 @@
    "d-Mass poisoning":"",
    "d-Paralysis":"",
    "d-Rage":"",
+   "D_Perk18": "defends effectively!",
+   "":" + + + + +ENEMIES + + + + +",
+   "D_SkinBite": "bites your leg!",
+   "D_SkinBite1": "can't attack!",
+   "D_SkinBite2": "can now attack!",
+   "CallDogs1": "calling wild dogs!",
    "":" + + + + +PERKS + + + + +",
    "D_SkillPerk01":"You are used to acting decisively. When the target is in front of you, you turn into a train without a stopcock (+1 STR)",
    "D_SkillPerk02":"No matter what happens in your life, you critically analyze everything. Those who know you say that you look like a soulless computing machine (+5 EXP after each successful event, but -1 MAX HP)",
@@ -76,5 +82,7 @@
    "D_SkillPerk13":"You gain distance and push the enemy with your shoulder in a big way. This attack can knock the enemy to the floor (+80% bring down the enemy).",
    "D_SkillPerk14":"Now Strange meat will replenish your health by 5. But even you understand that it's not good to eat your own kind, so Max Sanity -2",
    "D_SkillPerk15":"You remember that this has already happened to you. Now you are able to perform some actions reflexively.",
-   "D_SkillPerk16": "During your stay at the hotel, you have encountered many horrors. But they are not able to shake your psyche. It becomes almost impossible to surprise you (+5 SAN forever)"
+   "D_SkillPerk16": "During your stay at the hotel, you have encountered many horrors. But they are not able to shake your psyche. It becomes almost impossible to surprise you (+5 SAN forever)",
+   "D_SkillPerk17": "Multiple battles with wild animals were not in vain. Now you are a trained and deadly machine to adjust their numbers (+15% damage against wild animals)",
+   "D_SkillPerk18": "Using a piece of clothing, or a third-party item, you can defend against beasts extremely effectively (increased damage against animals)."
 }

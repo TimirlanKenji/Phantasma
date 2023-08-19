@@ -60,6 +60,10 @@
    "Mass poisoning":"Mass poisoning",
    "Paralysis":"Paralysis",
    "Rage":"Fury",
+   "":" + + + + +ENEMIES + + + + +",
+   "SkinBite":"Skin bite",
+   "CallDogs":"Call for Dogs",
+   "AttackBack":"Attack from behind",
    "":" + + + + +WEAPONS + + + + +",
    "Crush":"Crush",
    "Cut":"Cut",
@@ -82,5 +86,7 @@
    "SkillPerk13":"[Tough dash]",
    "SkillPerk14":"[Cannibal]",
    "SkillPerk15":"[Deja vu?]",
-   "SkillPerk16":"[Nerves of Steel]"
+   "SkillPerk16":"[Nerves of Steel]",
+   "SkillPerk17": "[Ultimate Predator]",
+   "SkillPerk18": "[Animals counteraction]"
 }
