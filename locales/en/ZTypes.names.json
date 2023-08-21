@@ -14,7 +14,6 @@
    "Crushing":"Crushing",
    "Firearm":"Firearm",
    "Clothes":"Clothes",
-   "Weapon":"Weapon",
    "Body":"Body",
    "Accessory":"Accessory",
    "Parasite":"Spore Energy",
@@ -29,5 +28,10 @@
    "Parasite9":"!",
    "Finish":"Finish",
    "Yes":"Yes",
-   "No":"No"
+   "No":"No",
+   "Ammo":"Ammunition", 
+   "Ammo0":"Ammo", 
+   "Ammo01":"No change", 
+   "Ammo02":"left", 
+   "Ammo1":"Ammo"
 }
