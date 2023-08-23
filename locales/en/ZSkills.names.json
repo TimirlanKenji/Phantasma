@@ -1,5 +1,6 @@
 {
    "Base Attack":"Attack",
+   "BaseEnemyAttack":"Attack",
    "Base Defense":"Defense",
    "Strong strike":"Strong strike",
    "Double strike":"Double strike",

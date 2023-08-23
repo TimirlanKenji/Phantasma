@@ -581,8 +581,8 @@
    "Ev68_Ch2" : "[{PERK}] {SkillPerk01}",
    "Ev68_Ch3" : "Run",
    "Ev68_Ch1Win" : "<br>Let you and a human be weak and slow compared to predators, but don't give up so easily. It's not for nothing that your species is called the pinnacle of evolution. It's time to prove it in practice.",
-   "Ev68_Ch1Fail" : "<br>Who said you're a mattress and a goof?! It's time to show all your strength. Waiting for the dogs to approach, you try your best to kick the first specimen. But the insignificant lunge only added fuel to the fire. grabbed your leg."
-   "Ev68_Ch2Des" : "{Ev68_Ch2}<br>Nothing can break you. Strong muscles play, and any danger can be defeated by force. Waiting for the dogs to approach, you break the jaw of the first creature with a powerful kick. The rest, seeing the defeat of the leader, growling, retreat back."
+   "Ev68_Ch1Fail" : "<br>Who said you're a mattress and a goof?! It's time to show all your strength. Waiting for the dogs to approach, you try your best to kick the first specimen. But the insignificant lunge only added fuel to the fire. grabbed your leg.",
+   "Ev68_Ch2Des" : "{Ev68_Ch2}<br>Nothing can break you. Strong muscles play, and any danger can be defeated by force. Waiting for the dogs to approach, you break the jaw of the first creature with a powerful kick. The rest, seeing the defeat of the leader, growling, retreat back.",
    "Ev68_Ch3Des" : "{Ev68_Ch3}<br>A worthless, pathetic, and frail creature. That's the best way to describe you. Also, a coward. nearest door.",
    "Ev69_Name" : "                     Forest Lord<br>",
    "Ev69_Desc" : "Dark and impenetrable thickets in the middle of the hotel is nonsense. Another impossible devilry going on in this cursed place. So it's not a surprise for you to meet a short figure in a forest labyrinth. Looks like a moss-covered stump, she calmly sits on grass.",
@@ -598,7 +598,7 @@
    "Ev70_Ch2" : "Practice techniques",
    "Ev70_Ch1Win" : "<br>After scrolling through a few pages, you realize that one of the moves can be useful. By carefully repeating and memorizing the moves associated with it, you feel that your fighting ability against wild and feral animals has increased.",
    "Ev70_Ch1Fail" : "<br>After scrolling through a few pages, you decide to try to learn a new move. But no matter how hard you try, nothing works. Your clumsy movements can only make your enemy laugh. Well, laughing your opponent to death is also a good tactic." ,
-   "Ev70_Ch2Win" : "<br>Determining that you are capable of more, you continue to learn the techniques. The muscles in your body ache a little, but you feel that the skills of resisting wild creatures have increased many times over. You are a true herald of the apocalypse for flea creatures, and your arsenal has replenished new trick."
+   "Ev70_Ch2Win" : "<br>Determining that you are capable of more, you continue to learn the techniques. The muscles in your body ache a little, but you feel that the skills of resisting wild creatures have increased many times over. You are a true herald of the apocalypse for flea creatures, and your arsenal has replenished new trick.",
    "Ev70_Ch2Fail" : "<br>You decided to practice a little more, learn a new move. But after 20 minutes of repeating the movements from the illustrations, your side starts to prick and shortness of breath appears. You are at the limit. But even those skills that you have should be enough for protecting your miserable life. Probably.",
    "Ev71_Name" : "                     Decisive Battle<br>",
    "Ev71_Desc" : "The first thing that greets you is a rich musky smell. Then you notice piles of rags, on which puppies start squealing restlessly when they smell you. And at the last moment, your vision clings to a huge pit bull charging at you. Oh my god…",
