@@ -31,6 +31,7 @@
    "TextPlug-29" : "Language",
    "TextPlug-30" : "",
    "Tutorial1" : "Use WASD keys, arrow keys or left mouse button to move the character.",
+   "Tutorial2" : "Use Enter, Space or the left mouse button to interact with objects that are in front of the character.",
    "System1" : "General settings that alter the way the game behaves.",
    "System2" : "General",
    "System3" : "Command Remember",
