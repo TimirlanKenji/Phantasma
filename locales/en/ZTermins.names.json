@@ -65,6 +65,8 @@
    "Stress":" is stressing!",
    "Bleed":" is bleeding!",
    "Burns":" is burns!",
+   "UseStimulant": "Use {Item12}",
+   "GiveUp": "Give up",
    "Paralysis": " is scared!",
    "RandomRoll":"RANDOM ROLL ",
    "Roll":"COMPLEXITY ",
