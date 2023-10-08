@@ -66,6 +66,7 @@
    "Bleed":" кровоточит!",
    "Burns":" ожогся!",
    "UseStimulant":"Применить {Item12}",
+   "UseBlock":"Применить {Item06}",
    "GiveUp": "Сдаться",
    "Paralysis":" испуган!",
    "RandomRoll":"СЛУЧАЙНЫЙ БРОСОК ",

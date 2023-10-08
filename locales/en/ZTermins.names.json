@@ -66,6 +66,7 @@
    "Bleed":" is bleeding!",
    "Burns":" is burns!",
    "UseStimulant": "Use {Item12}",
+   "UseBlock":"Use {Item06}",
    "GiveUp": "Give up",
    "Paralysis": " is scared!",
    "RandomRoll":"RANDOM ROLL ",
