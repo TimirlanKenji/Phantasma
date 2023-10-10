@@ -38,7 +38,7 @@ null,
 {"id":36,"expanded":true,"name":"36_FoyerCoridor","order":50,"parentId":19,"scrollX":1320,"scrollY":1090.2857142857142},
 {"id":37,"expanded":false,"name":"37_SecretRoom","order":26,"parentId":32,"scrollX":1734.2222222222222,"scrollY":994.6666666666666},
 {"id":38,"expanded":true,"name":"38_Room81_Cell","order":19,"parentId":24,"scrollX":1673.3333333333333,"scrollY":1165.3333333333333},
-{"id":39,"expanded":true,"name":"39_CreepyRoom","order":51,"parentId":19,"scrollX":2021,"scrollY":1175},
+{"id":39,"expanded":true,"name":"39_CreepyRoom","order":51,"parentId":19,"scrollX":2005,"scrollY":1161},
 {"id":40,"expanded":false,"name":"40_Credits","order":48,"parentId":3,"scrollX":1182.5454545454545,"scrollY":665.4545454545455},
 {"id":41,"expanded":true,"name":"41_Room83_HansRoom","order":21,"parentId":24,"scrollX":1770.6666666666667,"scrollY":1286.6666666666667},
 {"id":42,"expanded":true,"name":"42_Room84_MarthaRoom","order":22,"parentId":24,"scrollX":1714.909090909091,"scrollY":1272},
@@ -51,5 +51,5 @@ null,
 {"id":49,"expanded":true,"name":"49_Room93_Photo2","order":14,"parentId":46,"scrollX":966,"scrollY":1311},
 {"id":50,"expanded":true,"name":"50_Room93_Photo3","order":15,"parentId":46,"scrollX":1165.0909090909092,"scrollY":1254.5454545454545},
 {"id":51,"expanded":true,"name":"51_CreepyRoom_NOT_USE!!","order":38,"parentId":7,"scrollX":2112,"scrollY":1254.857142857143},
-{"id":52,"expanded":true,"name":"52_BookMaze","order":52,"parentId":19,"scrollX":2077.714285714286,"scrollY":1426.2857142857142}
+{"id":52,"expanded":true,"name":"52_BookMaze","order":52,"parentId":19,"scrollX":2078,"scrollY":1426}
 ]
