@@ -12,6 +12,7 @@
    "MP":"SAN",
    "TP":"ADR",
    "EXPc":"EXP",
+   "Received":" received",
    "Success" : " SUCCESSFUL",
    "Failure" : " FAILED",
    "Check0":" [check ",
