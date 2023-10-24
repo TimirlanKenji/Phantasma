@@ -30,6 +30,7 @@
    "TextPlug-28" : "Exit",
    "TextPlug-29" : "Language",
    "TextPlug-30" : "",
+   "Achievement" : "Achievement unlocked!",
    "Tutorial1" : "Use WASD keys, arrow keys or left mouse button to move the character.",
    "Tutorial1_1" : "Skip the message by pressing Enter, Space or left mouse button when you see this symbol - ",
    "Tutorial2" : "Use the Enter, Space or left mouse button to interact with objects that are near the character.",
