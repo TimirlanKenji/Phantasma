@@ -84,5 +84,7 @@
    "D_SkillPerk15":"You remember that this has already happened to you. Now you are able to perform some actions reflexively.",
    "D_SkillPerk16": "During your stay at the hotel, you have encountered many horrors. But they are not able to shake your psyche. It becomes almost impossible to surprise you (+5 SAN forever)",
    "D_SkillPerk17": "Multiple battles with wild animals were not in vain. Now you are a trained and deadly machine to adjust their numbers (+15% damage against wild animals)",
-   "D_SkillPerk18": "Using a piece of clothing, or a third-party item, you can defend against beasts extremely effectively (increased damage against animals)."
+   "D_SkillPerk18": "Using a piece of clothing, or a third-party item, you can defend against beasts extremely effectively (increased damage against animals).",
+   "D_SkillPerk19":"By performing a mysterious ritual, you have gained the ability to restore your wounds. In times of extreme stress, focus on your body using your intuition.",
+   "D_SkillPerk20":"You are filled with rage, which gives you a sense of strength and determination to fight horrors. The next hit will deal damage equal to your hardness and strength."
 }
