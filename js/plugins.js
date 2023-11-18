@@ -26,6 +26,7 @@ var $plugins =
 {"name":"Galv_ScreenButtons","status":true,"description":"(v.1.3) Show buttons on screen that can be touched or clicked.","parameters":{"Precache Buttons":"BtnUp,BtnDown,BtnRight,BtnLeft,BtnOk,BtnCancel,BtnEvent","Disable Mouse Move":"false","Button Fade":"30"}},
 {"name":"YEP_KeyNameEntry","status":true,"description":"v1.00 Allows the Name Input Processing event to function\nwith the keyboard keys to enter in letters and numbers.","parameters":{"KeyboardMsg":"\"{System155}\\n\\\\c[6]{System156}\\\\c[0]\\n\\\\c[4]{System157}\\\\c[0]\\n{System158}\\n{System159}\\n\\\\c[6]{System160}\\\\c[0]\"","QWERTY Layout":"true"}},
 {"name":"YEP_KeyNumberInput","status":true,"description":"v1.00 Allows the Input Number event to use numbers instead.","parameters":{}},
+{"name":"WindowHide","status":true,"description":"v1.3.1 Define buttons the player can press to toggle whether the message window is shown.","parameters":{"key":"pageup h","right click":"true","show on new page":"true"}},
 {"name":"------------------------","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
 {"name":"-GAMEPLAY","status":false,"description":"","parameters":{}},
 {"name":"------------------------","status":false,"description":"----------------------------------------------------------------------------------","parameters":{}},
