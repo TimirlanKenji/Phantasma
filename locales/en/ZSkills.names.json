@@ -39,7 +39,7 @@
    "Poison attackX":"Poison attack",
    "Mana transfer":"Mana transfer",
    "Human shield":"Meat shield",
-   "Kirill finger (test)":"Kirill's finger (test)",
+   "DoubleCut_Des": " waving a knife!",
    "Draining":"Siphon",
    "Desiccation (mass)":"Mass siphon",
    "For experiments":"For science!",
@@ -65,6 +65,7 @@
    "SkinBite":"Skin bite",
    "CallDogs":"Call for Dogs",
    "AttackBack":"Attack from behind",
+   "DoubleCut":"Double cut",
    "":" + + + + +WEAPONS + + + + +",
    "Crush":"Crush",
    "Cut":"Cut",
@@ -92,5 +93,8 @@
    "SkillPerk17":"[Ultimate Predator]",
    "SkillPerk18":"[Animals counteraction]",
    "SkillPerk19":"[Metabolism]",
-   "SkillPerk20":"[Decisive Strike]"
+   "SkillPerk20":"[Decisive Strike]",
+   "SkillPerk21":"[Front kick]",
+   "SkillPerk22":"[Fight or flight]"
+}
 }

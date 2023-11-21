@@ -86,5 +86,7 @@
    "D_SkillPerk17": "Multiple battles with wild animals were not in vain. Now you are a trained and deadly machine to adjust their numbers (+15% damage against wild animals)",
    "D_SkillPerk18": "Using a piece of clothing, or a third-party item, you can defend against beasts extremely effectively (increased damage against animals).",
    "D_SkillPerk19":"By performing a mysterious ritual, you have gained the ability to restore your wounds. In times of extreme stress, focus on your body using your intuition.",
-   "D_SkillPerk20":"You are filled with rage, which gives you a sense of strength and determination to fight horrors. The next hit will deal damage equal to your hardness and strength."
+   "D_SkillPerk20":"You are filled with rage, which gives you a sense of strength and determination to fight horrors. The next hit will deal damage equal to your hardness and strength.",
+   "D_SkillPerk21":"Throw your leg forward and aim for the chest to knock your opponent down. The next hit will deal damage equal to the sum of your Strength and Dexterity.",
+   "D_SkillPerk22":"You've been injured enough to know that luck is not on your side. Adrenaline will give you speed, so you have the greatest chance of running away like a coward from this fight."
 }

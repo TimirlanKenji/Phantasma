@@ -39,7 +39,7 @@
    "Poison attackX":"Ядовитая атака",
    "Mana transfer":"Передача маны",
    "Human shield":"Живой щит",
-   "Kirill finger (test)":"Перст Кирилла (тест)",
+   "DoubleCut_Des":" размахивает ножом!",
    "Draining":"Иссушение",
    "Desiccation (mass)":"Иссушение (масс.)",
    "For experiments":"Для опытов",
@@ -65,6 +65,7 @@
    "SkinBite":"Вцепится",
    "CallDogs":"Призыв собак",
    "AttackBack":"Атака со спины",
+   "DoubleCut":"Двойной порез",
    "":" + + + + +ОРУЖИЕ + + + + +",
    "Crush":"Крушить",
    "Cut":"Резать",
@@ -92,5 +93,7 @@
    "SkillPerk17":"[Высший хищник]",
    "SkillPerk18":"[Противодействие животным]",
    "SkillPerk19":"[Метаболизм]",
-   "SkillPerk20":"[Решающий удар]"
+   "SkillPerk20":"[Решающий удар]",
+   "SkillPerk21":"[Удар ногой]",
+   "SkillPerk22":"[Бей или беги]"
 }
