@@ -1,11 +1,11 @@
 {
    "Cigarette":"A little calming consciousness (+2 Sanity), but loses 1 health.",
    "Strange meat":"White meat with blood. It looks like pork, but ...",
-   "Bandage":"Stops bleeding and increases HP by 1.",
+   "Bandage":"Stops bleeding and restores HP by 3.",
    "Antidote":"Heals poisoning",
    "Painkillers":"Makes you forget about pain for a short time and restores 5 of your health.",
    "Beta blockers":"Soothe nerves. Sanity + 2",
-   "First Aid":"Stops bleeding and restores HEALTH by 8.",
+   "First Aid":"Stops bleeding and restores HEALTH by 10.",
    "Ointment":"Cures burns of varying severity.",
    "Antiviral agent":"Fights spore in the body. Increases countdown by 5",
    "Adrenaline Shot":"Adrenaline injection. Increases your chances of battle (+20 ADR)",
