@@ -21,7 +21,7 @@
    "Ground coffee":"What goes best with a cup of coffee? Another cup. It remains only to find where to make it.",
    "Igniter Fluid":"With this liquid, you can start a small fire.",
    "Antique key":"Antique red bronze key. The tendons braided around him serve as a pattern.",
-   "Small key":"Small filigree key.",
+   "Small key":"A small key that fits into a drawer or chest of drawers.",
    "Cross key": "An antique bronze key. It has a Celtic cross on it.",
    "White Pearl":"An organic gemstone.",
    "Black Pearl": "One of the most unusual and unique gemstones.",
@@ -40,5 +40,6 @@
    "Sandbag": "Helps you resist fire traps",
    "BloodyKey": "A small key. The tag on it says 'West Rooms'",
    "BoneKey": "A key roughly carved from a human rib. Porous veining visible here and there.",
-   "ElevatorKey": "The key is in a leather case. The notch matches the hole in the elevator doors."
+   "ElevatorKey": "The key is in a leather case. The notch matches the hole in the elevator doors.",
+   "Bell":"Small bell"
 }
