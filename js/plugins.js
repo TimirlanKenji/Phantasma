@@ -79,5 +79,6 @@ var $plugins =
 {"name":"GALV_VisibilityRange","status":true,"description":"(v.1.2) Use an image to display a visibility range image around the player's position","parameters":{"Zoom Variable":"49","Opacity Variable":"50","Z Position":"10"}},
 {"name":"HIME_PreTitleEvents","status":true,"description":"Build your own sequence of events that should occur before\r\nthe title screen begins","parameters":{"Pre-Title Map ID":"53","Use As Title":"false\r"}},
 {"name":"Gimmer_Core","status":true,"description":"v1.6.6 - General plugin framework for my other plugins","parameters":{"---Parameters---":"","debug":"false","Advanced Debug":"false","Show Mouse Coordinates":"true","---Helpers---":"","Block F5 Reload":"false"}},
-{"name":"Gimmer_Mirror","status":true,"description":"v1.0 - Choose tiles that are mirrors? Regions that are Mirrors? Who knows","parameters":{"---Parameters---":"","Opacity of Mirrors":"180"}}
+{"name":"Gimmer_Mirror","status":true,"description":"v1.0 - Choose tiles that are mirrors? Regions that are Mirrors? Who knows","parameters":{"---Parameters---":"","Opacity of Mirrors":"180"}},
+{"name":"MOG_CharShatterEffect","status":true,"description":"(v1.1) Cria o efeito de shatter nos sprites dos characters.","parameters":{}}
 ];
