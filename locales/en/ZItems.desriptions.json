@@ -41,5 +41,6 @@
    "BloodyKey": "A small key. The tag on it says 'West Rooms'",
    "BoneKey": "A key roughly carved from a human rib. Porous veining visible here and there.",
    "ElevatorKey": "The key is in a leather case. The notch matches the hole in the elevator doors.",
-   "Bell":"A small but weighty bell. Its ringing is filled with purity and hidden power. A chrisma is engraved on one side."
+   "Bell":"A small but weighty bell. Its ringing is filled with purity and hidden power. A chrisma is engraved on one side.",
+   "Stinking Key":"Still stinks of stomach contents."
 }

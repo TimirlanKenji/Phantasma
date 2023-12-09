@@ -788,6 +788,7 @@
    "Gain_EXP" : " [EXP] gained! ",
    "Gain_CASH" : " [CASH] gained! ",
    "Gain_SPELL" : " [+SPELL] ",
+   "LossCOUNT0" : " -[COUNTDOWN]",
    "LossCOUNT1" : " -1 [COUNTDOWN] ",
    "LossCOUNT2" : " -2 [COUNTDOWN] ",
    "LossCOUNT" : " -5 [COUNTDOWN] ",

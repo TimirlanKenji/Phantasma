@@ -94,7 +94,7 @@
    "Document19_3":"“Oh... I'll be waiting for you tomorrow after sunset in the woods behind the hotel. A sweet trail will lead you to me. Don't worry, my husband will be in town until the next day. In the meantime, please accept this humble gift. See you soon meeting Your unbridled Fifi.”<br>",
    "Document20":"Court order",
    "Document20_0": "A document about the punishment of a certain Adam- apparently, who visited the hotel after closing.",
-   "Document20_1": "“By the power given to me by myself, as the first and only owner of this place, I command that the accused bird, Adam, be sentenced to death ten times over. He is accused of all conceivable and unimaginable sins of humanity. But most of all, violating the boundaries of what is permitted and your overly curious nose where it shouldn’t be.”"
+   "Document20_1": "“By the power given to me by myself, as the first and only owner of this place, I command that the accused bird, Adam, be sentenced to death ten times over. He is accused of all conceivable and unimaginable sins of humanity. But most of all, violating the boundaries of what is permitted and your overly curious nose where it shouldn’t be.”",
    "Document20_2": "“I hereby decree: the first four executions are by quartering, the next two by tearing to pieces, but by a dirty of dogs, and not by noble lions, then one by drowning, and the last three are at the discretion of the defendant himself.”",
    "Document21":"Transcript",
    "Document21_0":"Another court document. This time- a recording of the words of the defendant Adam.",
@@ -103,5 +103,10 @@
    "Document21_3":"“Door! Glory to the Lord! I am saved! Wha-what is this? Oh, no, Lord, for what!? Mr....”",
    "Document21_4": "The shorthand breaks off at these words. There is a small note at the bottom.",
    "Document21_5": "“Out of my greatest mercy, I save this most curious object for subsequent birds.”",
+   "Document22":"Patient Card",
+   "Document22_0": "Patient's card, nicknamed Lucky.",
+   "Document22_1":"Patient's name: Lucky<br>Breed: Golden Retriever<br>Date of birth: 197…<br>Weight: 28 kg.",
+   "Document22_2": "Anamnesis: The patient was admitted with difficulties in absorbing food. According to the owner, the dog had practically stopped eating for several days. Further examination showed the presence of a foreign object in the stomach.",    
+   "Document22_3": "Thanks to tomography, it was possible to determine the nature of the object that is the key. Treatment in the form of a gastrotomy was prescribed.<br>Attending physician: Jeffrey Peterson.",
    "Document100":"No"
 }

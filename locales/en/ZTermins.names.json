@@ -69,6 +69,7 @@
    "Stress":" is stressing!",
    "Bleed":" is bleeding!",
    "Burns":" is burns!",
+   "Enter":"Enter into serenity?",
    "UseStimulant": "Use {Item12}",
    "UseBlock":"Use {Item06}",
    "Use":"Use ",
