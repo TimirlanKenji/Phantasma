@@ -108,5 +108,9 @@
    "Document22_1":"Patient's name: Lucky<br>Breed: Golden Retriever<br>Date of birth: 197…<br>Weight: 28 kg.",
    "Document22_2": "Anamnesis: The patient was admitted with difficulties in absorbing food. According to the owner, the dog had practically stopped eating for several days. Further examination showed the presence of a foreign object in the stomach.",    
    "Document22_3": "Thanks to tomography, it was possible to determine the nature of the object that is the key. Treatment in the form of a gastrotomy was prescribed.<br>Attending physician: Jeffrey Peterson.",
+   "Document23": "Message to the best doctor",
+   "Document23_0": "A message written in calligraphic handwriting. Addressed to the best veterinary surgeon in the USA.",
+   "Document23_1": "Dear Mr. Doctor! A luminary of medical science, the best veterinary surgeon in the USA. I am happy to inform you that your misadventures have come to an end.",
+   "Document23_2":"There is only one last step left on the path to freedom. You just need to get what is in the box.<br>All the best and good luck!",
    "Document100":"No"
 }
