@@ -53,11 +53,11 @@ null,
 {"id":51,"expanded":true,"name":"51_CreepyRoom_NOT_USE!!","order":38,"parentId":7,"scrollX":1600.8,"scrollY":2035.1999999999998},
 {"id":52,"expanded":true,"name":"52_BookMaze","order":53,"parentId":19,"scrollX":3072,"scrollY":1140},
 {"id":53,"expanded":true,"name":"53_Splash_Screen","order":60,"parentId":0,"scrollX":665,"scrollY":864},
-{"id":54,"expanded":true,"name":"54_CreepyCorridor","order":54,"parentId":19,"scrollX":4405.090909090909,"scrollY":858.5454545454546},
+{"id":54,"expanded":true,"name":"54_CreepyCorridor","order":54,"parentId":19,"scrollX":4405.714285714285,"scrollY":1002.8571428571428},
 {"id":55,"expanded":true,"name":"52_BookMaze_NOT_USE!!","order":39,"parentId":7,"scrollX":1601.3999999999999,"scrollY":1891.1999999999998},
 {"id":56,"expanded":true,"name":"56_ToiletRoom","order":55,"parentId":19,"scrollX":1255,"scrollY":848},
-{"id":57,"expanded":true,"name":"57_LobbyPrologue","order":56,"parentId":19,"scrollX":1584,"scrollY":846},
+{"id":57,"expanded":true,"name":"57_LobbyPrologue","order":56,"parentId":19,"scrollX":2304,"scrollY":1002.8571428571428},
 {"id":58,"expanded":true,"name":"58_MirrorRoom","order":57,"parentId":19,"scrollX":2142.8571428571427,"scrollY":765.4285714285713},
 {"id":59,"expanded":true,"name":"59_CourtRoom","order":58,"parentId":19,"scrollX":2916,"scrollY":1012.5},
-{"id":60,"expanded":true,"name":"60_OperatingRoom","order":59,"parentId":19,"scrollX":1940,"scrollY":1220}
+{"id":60,"expanded":true,"name":"60_OperatingRoom","order":59,"parentId":19,"scrollX":1829.142857142857,"scrollY":1192.2857142857142}
 ]
