@@ -70,6 +70,7 @@
    "D_SkinBite1": " can't attack!",
    "D_SkinBite2": " can now attack!",
    "CallDogs1": "calling wild dogs!",
+   "D_Strangulation":" trying to strangle you!",
    "":" + + + + +PERKS + + + + +",
    "D_SkillPerk01":"You are used to acting decisively. When the target is in front of you, you turn into a train without a stopcock (+1 STR)",
    "D_SkillPerk02":"No matter what happens in your life, you critically analyze everything. Those who know you say that you look like a soulless computing machine (+5 EXP after each successful event, but -1 MAX HP)",
@@ -93,5 +94,5 @@
    "D_SkillPerk20":"You are filled with rage, which gives you a sense of strength and determination to fight horrors. The next hit will deal damage equal to your hardness and strength.",
    "D_SkillPerk21":"Throw your leg forward and aim for the chest to knock your opponent down. The next hit will deal damage equal to the sum of your Strength and Dexterity.",
    "D_SkillPerk22":"You've been injured enough to know that luck is not on your side. Adrenaline will give you speed, so you have the greatest chance of running away like a coward from this fight.",
-   "D_SkillPerk23":"The whole world is a stage - adapt and survive in the most difficult situations. Now your INSIGHT will affect every random check."
+   "D_SkillPerk23":"Can't break through a wall with your head? Try climbing over it. After all, some situations require creativity and out-of-the-box thinking. Now your INSIGHT will affect every random check."
 }
