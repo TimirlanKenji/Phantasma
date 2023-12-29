@@ -628,7 +628,7 @@
    "Ev73_Ch3" : "Leave",
    "Ev73_Ch1Win" : "<br>Succumbing to panic, you lean on the abomination. But this gives nothing. Your shoulder gets stuck in the soft flesh, and your clothes are covered with discharge. Brutal blows with your fist do not bring results. You can only hear a muffled, painful groan. Without strength, you slide onto floor.",
    "Ev73_Ch1Fail" : "<br>Succumbing to panic, you lean on the abomination. But this gives nothing. Your shoulder gets stuck in the soft flesh, and your clothes are covered with discharge. Brutal blows with your fist do not bring results. You can only hear a muffled, painful groan. Without strength, you slide onto floor.",
-   "Ev73_Ch2Des" : "{Ev73_Ch2}<br>Having taken out the bone key, you forcefully push it into the eye socket. A scream full of horror and pain is heard, and blood begins to flow from under the key halfway into the hole. The mutilated door trembles and groans for some time , after which it opens silently.",
+   "Ev73_Ch2Des" : "<br>Having taken out the bone key, you forcefully push it into the eye socket. A scream full of horror and pain is heard, and blood begins to flow from under the key halfway into the hole. The mutilated door trembles and groans for some time , after which it opens silently.",
    "Ev73_Ch3Des" : "{Ev73_Ch2}<br>Get out. Get out. Away from this disgusting barrier of sewn meat and clothes.",
    "Ev74_Name" : "                                 Ugly book<br>",
    "Ev74_Desc" : "Countless bookcases create winding corridors with no exit. Having made another turn, you notice how something that looks like an ordinary book falls from one of the shelves at your feet. But you soon realize that the nature of its origin is similar to the mutilated door." ,
