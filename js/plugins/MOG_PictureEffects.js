@@ -3,14 +3,14 @@
 //=============================================================================
 
 /*:
- * @plugindesc (v1.3) Adiciona novas funções no sistema de mostrar imagens.
+ * @plugindesc (v1.4) Adiciona novas funções no sistema de mostrar imagens.
  * @author Moghunter
  * 
  * @help  
  * =============================================================================
- * +++ MOG - Picture Effects (v1.3) +++
+ * +++ MOG - Picture Effects (v1.4) +++
  * By Moghunter 
- * https://atelierrgss.wordpress.com/
+ * https://mogplugins.wordpress.com
  * =============================================================================
  * Adiciona novas funções no sistema de mostrar imagens.
  * =============================================================================
@@ -71,6 +71,7 @@
  * =============================================================================
  * * HISTÓRICO * 
  * =============================================================================
+ * (1.4) - Compatibilidade com Rpg Maker MV 1.6+
  * (1.3) - Adicionado o efeito Smooth.
  *       - Adicionado as opções de definir o poder e velocidade dos efeitos.
  * (1.2) - Adicionado a função de tremer no modo 2. 
@@ -96,7 +97,7 @@
 var _alias_mog_picefc_pluginCommand = Game_Interpreter.prototype.pluginCommand
 Game_Interpreter.prototype.pluginCommand = function(command, args) {
 	_alias_mog_picefc_pluginCommand.call(this,command, args);
-	if ($gameScreen.picture(args[1])) {this.setPictureEffects(command, args)};
+	if ($gameScreen.picture(Number(args[1]))) {this.setPictureEffects(command, args)};
 	return true;
 };
 
@@ -132,32 +133,32 @@ Game_Interpreter.prototype.picEfctSetPos = function(command, args) {
 //==============================
 Game_Interpreter.prototype.picEfctSetAni = function(command, args) {
 	var enable = String(args[3]) === "true" ? true : false;
-	if (command === "pic_animated")  {
+	if (command == "pic_animated")  {
 		   var frm = Math.min(Math.max(Number(args[3]),1),999);	
 		   var speed = args[5] ? Number(args[5]) : 20;
      	   $gameScreen.picture(Number(args[1]))._animeData = [true,frm,9999,0,speed];
 	};	
-	if (command === "pic_shake")  {
+	if (command == "pic_shake")  {
 		   var pw = args[5] ? Number(args[5]) : 10;
 	       $gameScreen.picture(Number(args[1]))._shake = [enable,20,0,0,pw];
 	} else if (command === "pic_shake2")  {
 		   var pw = args[5] ? Number(args[5]) : 10;
 	   	   $gameScreen.picture(Number(args[1]))._shake2 = [enable,20,0,0,pw,0,0];
 	};	
-	if (command === "pic_breath")  {
+	if (command == "pic_breath")  {
 		   var pw = args[5] ? Number(args[5]) : 1;
 		   var pw = pw * 0.01
 		   var pw2 = args[7] ? Number(args[7]) : 5;
 		   var pw2 = 1 + (pw2 * 0.1);
 	   	   $gameScreen.picture(Number(args[1]))._breathEffect = [enable,0,0,0,pw,pw2];
 	};
-	if (command === "pic_float")  {
+	if (command == "pic_float")  {
 		   var pw = args[5] ? Number(args[5]) : 1;
 		   var pw = pw * 0.1;
 		   var pw2 = args[7] ? Number(args[7]) : 15;
 		   $gameScreen.picture(Number(args[1]))._floatEffect = [enable,0,0,0,pw2,pw];
 	};
-	if (command === "pic_smooth")  {
+	if (command == "pic_smooth")  {
 		  var pw = args[5] ? Number(args[5]) : 20;
 		  var pw2 = args[7] ? Number(args[7]) : 160;
 		  var pw2 = pw2 * 0.01;
