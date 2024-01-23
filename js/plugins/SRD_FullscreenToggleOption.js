@@ -134,5 +134,19 @@
 	    	Graphics._switchFullScreen();
 	    }
 	};
-
+    Window_Options.prototype.lastInput = false;
+	
+	Window_Options_processHandling = Window_Options.prototype.processHandling
+	Window_Options.prototype.processHandling = function() {
+		if (this.isOpenAndActive()) {
+	    		if (this.lastInput){
+	        		this.refresh();
+		        	this.lastInput = false;
+	        } else if ((this.isOkEnabled() && this.isOkTriggered()) ||
+	         (TouchInput.isTriggered() && this.isTouchedInsideFrame())){
+	        	this.lastInput = true;
+	        }
+	    }
+		Window_Options_processHandling.call(this);
+	};
 })();
