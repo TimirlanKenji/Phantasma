@@ -1,6 +1,7 @@
 {
    "Level":"Level",
    "Hitpoint":"Health",
+   "Hitpoint1": "Decreases when receiving physical injuries and technical injuries.",
    "Manapoint":"Sanity",
    "MaxHitpoint":"Maximum health",
    "MaxManapoint":"Maximum sanity",
