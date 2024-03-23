@@ -12,7 +12,7 @@ null,
 {"id":10,"expanded":false,"name":"10_15floor","order":4,"parentId":1,"scrollX":2272,"scrollY":1386},
 {"id":11,"expanded":false,"name":"11_14floor","order":5,"parentId":1,"scrollX":1116.857142857143,"scrollY":1386},
 {"id":12,"expanded":false,"name":"12_13floor","order":6,"parentId":1,"scrollX":1387,"scrollY":1555},
-{"id":13,"expanded":true,"name":"13_12floor_GALLERY","order":7,"parentId":1,"scrollX":1203,"scrollY":2398},
+{"id":13,"expanded":true,"name":"13_12floor_GALLERY","order":7,"parentId":1,"scrollX":1539,"scrollY":2744.4},
 {"id":14,"expanded":true,"name":"14_Room61_FirstBattle","order":32,"parentId":26,"scrollX":1824,"scrollY":1289.3333333333333},
 {"id":15,"expanded":true,"name":"15_Room62_Puzzle","order":33,"parentId":26,"scrollX":2026.6666666666667,"scrollY":1110.6666666666667},
 {"id":16,"expanded":true,"name":"16_Room63_Corpse","order":35,"parentId":26,"scrollX":1624,"scrollY":1190.6666666666667},
@@ -60,5 +60,5 @@ null,
 {"id":58,"expanded":true,"name":"58_MirrorRoom","order":58,"parentId":19,"scrollX":1995,"scrollY":1248.75},
 {"id":59,"expanded":true,"name":"59_CourtRoom","order":59,"parentId":19,"scrollX":2343.6,"scrollY":1152},
 {"id":60,"expanded":true,"name":"60_OperatingRoom","order":60,"parentId":19,"scrollX":1501.2,"scrollY":1399.2},
-{"id":61,"expanded":true,"name":"61_Picture1930","order":8,"parentId":13,"scrollX":1408,"scrollY":1110.6666666666667}
+{"id":61,"expanded":true,"name":"61_Picture1930","order":8,"parentId":13,"scrollX":1390,"scrollY":914.6666666666666}
 ]
