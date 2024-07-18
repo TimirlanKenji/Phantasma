@@ -42,5 +42,10 @@
    "BoneKey": "A key roughly carved from a human rib. Porous veining visible here and there.",
    "ElevatorKey": "The key is in a leather case. The notch matches the hole in the elevator doors.",
    "Bell":"A small but weighty bell. Its ringing is filled with purity and hidden power. A chrisma is engraved on one side.",
-   "Stinking Key":"Still stinks of stomach contents."
+   "Stinking Key":"Still stinks of stomach contents.",
+   "Girl's Key": "A small key that was in the girl's hand. Wrapped with a small pink ribbon.",
+   "Prison Key": "A massive brass key with an engraving. Probably from the door behind the painting.",
+   "Dollar Key": "Why would anyone hide it there?",
+   "Traveler's Key": "An elegant key carved from wood.",
+   "ItemDescription":"NotUSe"
 }

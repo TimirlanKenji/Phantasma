@@ -42,5 +42,10 @@
    "Item41":"Sandbag",
    "Item42":"Bloody Key", 
    "Item43":"Bone Key",
-   "Item44":"Stinking Key"
+   "Item44":"Stinking Key",
+   "Item45":"Girl's Key", 
+   "Item46":"Prison Key", 
+   "Item47":"Dollar Key", 
+   "Item48":"Traveler's Key",
+   "Item100":"NotUse"
 }
