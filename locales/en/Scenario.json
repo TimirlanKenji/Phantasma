@@ -737,7 +737,7 @@
    "Ev88_Name" : "Missing part<br>",
    "Ev88_Desc" : "Along the way you come across an alcove with a canvas. There is something missing from the painting of a man in a formal suit. The missing element is found underneath the painting, in the form of a severed head. As you get closer, her eyes widen.",
    "Ev88_Ch1" : "Examine the painting",
-   "Ev88_Ch2" : "Пройти мимо",
+   "Ev88_Ch2" : "Past by",
    "Ev88_Ch1Win" : "<br>You examine a painting depicting a gentleman who is still missing his head. But as you look closely, you notice that this is not a detail of the image. The canvas has a kind of hollow. After putting the facts together, you take the head and put it there. As you leave, you hear, “Thank you!”.",
    "Ev88_Ch1Fail" : "<br>You examine a painting depicting a man with his head missing. What does this mean? Close inspection reveals a hollow in the place of the missing piece. You need to insert the head there? Nonsense! As you walk away, the words, “You miserable wretch!” are heard in your back.",
    "Ev88_Ch2Win" : "<br>You're thinking to yourself, “I don't need this. Gotta get out of here.” As you pass by, you think you hear something. But behind a string of turning corridors, you simply forget about another mangled spawn of the hotel.",
