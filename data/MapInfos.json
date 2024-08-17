@@ -12,7 +12,7 @@ null,
 {"id":10,"expanded":false,"name":"10_15floor","order":4,"parentId":1,"scrollX":1808,"scrollY":2010},
 {"id":11,"expanded":false,"name":"11_14floor","order":5,"parentId":1,"scrollX":1117.3333333333333,"scrollY":1386},
 {"id":12,"expanded":false,"name":"12_13floor","order":6,"parentId":1,"scrollX":3326.6666666666665,"scrollY":2010},
-{"id":13,"expanded":true,"name":"13_12floor_GALLERY","order":7,"parentId":1,"scrollX":1119.2727272727273,"scrollY":2706.5454545454545},
+{"id":13,"expanded":true,"name":"13_12floor_GALLERY","order":7,"parentId":1,"scrollX":1718.3999999999999,"scrollY":1404},
 {"id":14,"expanded":true,"name":"14_Room61_FirstBattle","order":34,"parentId":26,"scrollX":1824,"scrollY":1290.75},
 {"id":15,"expanded":true,"name":"15_Room62_Puzzle","order":35,"parentId":26,"scrollX":2026.6666666666667,"scrollY":1110.6666666666667},
 {"id":16,"expanded":true,"name":"16_Room63_Corpse","order":37,"parentId":26,"scrollX":1624,"scrollY":1190.6666666666667},
@@ -60,7 +60,7 @@ null,
 {"id":58,"expanded":true,"name":"58_MirrorRoom","order":60,"parentId":19,"scrollX":1840.5,"scrollY":1322.25},
 {"id":59,"expanded":true,"name":"59_CourtRoom","order":61,"parentId":19,"scrollX":1912.5,"scrollY":2027.25},
 {"id":60,"expanded":true,"name":"60_OperatingRoom","order":62,"parentId":19,"scrollX":1766,"scrollY":1194},
-{"id":61,"expanded":true,"name":"61_Picture1930","order":8,"parentId":13,"scrollX":1119.2727272727273,"scrollY":1281.818181818182},
+{"id":61,"expanded":true,"name":"61_Picture1930","order":8,"parentId":13,"scrollX":1118.6666666666667,"scrollY":1282},
 {"id":62,"expanded":true,"name":"62_PictureFatman","order":9,"parentId":13,"scrollX":1714,"scrollY":1232},
-{"id":63,"expanded":true,"name":"63_PictureNature","order":10,"parentId":13,"scrollX":2365.090909090909,"scrollY":1330.909090909091}
+{"id":63,"expanded":true,"name":"63_PictureNature","order":10,"parentId":13,"scrollX":1198.8,"scrollY":1591.8}
 ]
