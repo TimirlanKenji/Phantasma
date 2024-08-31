@@ -3,6 +3,7 @@
    "Hitpoint":"Health",
    "Hitpoint1": "Decreases when receiving physical injuries and technical injuries.",
    "Manapoint":"Sanity",
+   "CTD":"Countdown",
    "MaxHitpoint":"Maximum health",
    "MaxManapoint":"Maximum sanity",
    "TraumaText":"The traumas you have experienced leave a mark on your body.<br><br>",
