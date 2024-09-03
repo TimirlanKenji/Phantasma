@@ -84,7 +84,7 @@
    "D_SkillPerk08":"You've been hitting the gym so often that you've developed an unhealthy habit of exercising constantly. Don't forget, by the way, to complete 20 squats (+1 Health after each successful event)",
    "D_SkillPerk09": "You are the face of the group. All the attention of the audience is focused primarily on you, and it doesn’t matter where – on a live performance or in a video clip (+1 INS)",
    "D_SkillPerk10":"Your body has experienced multiple shocks, and the skin seems to be covered with a second rough layer. Nevertheless, you have not become less nimble from this (+1 DEX)",
-   "D_SkillPerk11":"Now you are living with the news that a parasite is developing inside you. But there is also a plus- by concentrating all your perception on the body, you can make it fall asleep for a short time (+ 2 COUNT after a successful event, but -1 MAX SAN).",
+   "D_SkillPerk11":"Now you are living with the news that a parasite is developing inside you (-1 max SAN). But there is also a plus- by concentrating all your perception on the body, you can make it fall asleep for a short time (+ 1 COUNT after a successful event).",
    "D_SkillPerk12":"You use the interior and walls for the most successful evasion of enemy attacks (+3 critical. evasion)",
    "D_SkillPerk13":"You gain distance and push the enemy with your shoulder in a big way. This attack can knock the enemy to the floor (+80% bring down the enemy).",
    "D_SkillPerk14":"Now Strange meat will replenish your health by 5. But even you understand that it's not good to eat your own kind, so Max Sanity -2",
