@@ -861,6 +861,7 @@
    "LossCOUNT2" : " -2 [COUNTDOWN] ",
    "LossCOUNT" : " -5 [COUNTDOWN] ",
    "GainCOUNT" : " +5 [COUNTDOWN] ",
+   "GainCOUNT1" : " +1 [COUNTDOWN] ",
    "GainCOUNT10" : " +10 [COUNTDOWN] ",
    "LossCOUNT10" : " -10 [COUNTDOWN] ",
    "Loss_SAN1" : " [-1 Sanity] ",

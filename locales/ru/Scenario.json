@@ -862,6 +862,7 @@
    "LossCOUNT2" : " -2 [ОТСЧЕТ] ",
    "LossCOUNT" : " -5 [ОТСЧЕТ] ",
    "GainCOUNT" : " +5 [ОТСЧЕТ] ",
+   "GainCOUNT1" : " +1 [ОТСЧЕТ] ",
    "GainCOUNT10" : " +10 [ОТСЧЕТ] ",
    "LossCOUNT10" : " -10 [ОТСЧЕТ] ",
    "Loss_SAN1" : " [-1 Рассудок] ",
