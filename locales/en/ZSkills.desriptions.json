@@ -68,6 +68,8 @@
    "d_perk21":" kicks to the body!",
    "d_perk22": " running headlong!",
    "":" + + + + +ENEMIES + + + + +",
+   "D_Swing":" swings weapon!",
+   "D_BatHit":" swings the bat!",
    "D_SkinBite": " bites your leg!",
    "D_SkinBite1": " can't attack!",
    "D_SkinBite2": " can now attack!",

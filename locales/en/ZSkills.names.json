@@ -60,6 +60,8 @@
    "Skill_Paralysis":"Paralysis",
    "Rage":"Fury",
    "":" + + + + +ENEMIES + + + + +",
+   "Swing":"Swing",
+   "BatHit":"Bat hit",
    "SkinBite":"Skin bite",
    "CallDogs":"Call for Dogs",
    "AttackBack":"Attack from behind",
