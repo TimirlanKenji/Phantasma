@@ -16,7 +16,7 @@
    "TextPlug-14" : "Location:",
    "TextPlug-15" : "Game time:",
    "TextPlug-16" : "Number of save games:",
-   "TextPlug-17" : "Cash:",
+   "TextPlug-17" : "{SystemText-53}:",
    "TextPlug-18" : "Load game?",
    "TextPlug-19" : "Save game?",
    "TextPlug-20" : "Delete game?",
@@ -235,6 +235,6 @@
    "SystemText-50" : "Save menu",
    "SystemText-51" : "Help",
    "SystemText-52" : "[+ 500 experience]",
-   "SystemText-53" : "Coins",
+   "SystemText-53" : "Slyaty",
    "SystemText-54" : "Events"
 }
