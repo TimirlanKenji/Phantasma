@@ -5,7 +5,7 @@
    "Antidote":"Heals poisoning",
    "Painkillers":"Makes you forget about pain for a short time and restores 5 of your health.",
    "Beta blockers":"Magic pills that slow your heart rate, lower your blood pressure and protect you from prolonged stress (+3 SANITY). But it also neutralizes adrenaline (-10 ADR).",
-   "First Aid":"Stops bleeding and restores HEALTH by 10.",
+   "First Aid":"Eliminates sickness, poisoning and burns. Restores HEALTH by 10.",
    "Ointment":"Cures burns of varying severity.",
    "Antiviral agent":"Fights spore in the body. Increases countdown by 5",
    "Adrenaline Shot":"Adrenaline injection. Increases your chances of battle (+50 ADR)",
