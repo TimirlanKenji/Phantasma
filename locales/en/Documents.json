@@ -133,7 +133,7 @@
    "Document29_0":"Old tattered photograph",
    "Document29_1":"A photograph of a group of men in business suits, who look well off, in front of the Hotel. The gilded plaque reads: «William Warren and Shareholders. 1890.»",
    "Document30":"Big Red Poster",
-   "Document30_0":"Not Available",
+   "Document30_0":"Colourful poster advertising the opening of a hotel swimming pool",
    "Document30_1":"The Biggest Event of the 1930s! For the First Time! A Swimming Pool on the Grounds of the Abenaki Mountain Hotel!",
    "Document30_2":"To celebrate the opening, we're announcing a contest: «Treasure Diving! Can YOU get your prize? Come this Saturday and prove that you've got the water under your belt.»",
    "Document30_3":"Ticket Price: $2.",
@@ -144,5 +144,9 @@
    "Document32":"Dismissal Order",
    "Document32_0":"Dismissal Order in the name of Enola. Dated 1938",
    "Document32_1":"We inform the recipient of this order that the Hotel Administration is terminating the employment contract. The main claims against the employee include: illegal redevelopment of the occupied premises, damage to hotel property, harm to the reputation of the hotel…",
+   "Document33":"Message on tree bark",
+   "Document33_0":"A message written on tree bark. It looks like someone left it just for you",
+   "Document33_1":"«My little bird! You've seen the path of struggle. And what has become of him who threw himself into the whirlpool?<br>Now he is a toy in my subjugation. Another pawn in the hotel labyrinth.<br>An imbecile Indian decided to break down the mountain. But even I, over centuries, could not tame it.»",
+   "Document33_2":"«Now your choice is such a joke.<br>To come to the concert, what an idiot!»",
    "Document100":"No"
 }
