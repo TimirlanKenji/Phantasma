@@ -84,6 +84,8 @@
    "UseBlock":"Use {Item06}",
    "Use":"Use ",
    "GiveUp": "Give up",
+   "Climb": "Climb up",
+   "Down": "Go down",
    "Paralysis": " is scared!",
    "RandomRoll":"RANDOM ROLL ",
    "Roll":"COMPLEXITY ",
