@@ -140,6 +140,7 @@
    "UseStimulant": "Use {Item12}",
    "UseBlock":"Use {Item06}",
    "Use":"Use ",
+   "Remove":"Remove ",
    "Plus":"+",
    "GiveUp": "Give up",
    "Climb": "Climb up",
