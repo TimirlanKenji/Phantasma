@@ -112,6 +112,8 @@
    "Tutorial49" : "PERKS provide your character with advantages that take effect as soon as you receive them.",
    "Tutorial50" : "Some events allow you to avoid checks by using a certain PERK.<br>Using a PERK guarantees SUCCESS in completing the event. Unlike an item, a PERK can be used multiple times.",
    "Tutorial51" : "Different events may have different PERKS that are useful. To see the option a PERK unlocks, you must have it equipped at the start of the event.<br>Select an available option to apply an existing PERK.",
+   "EnterCode001": "The door is locked with a combination lock.",
+   "EnterCode002": "Enter code",
    "EnterCode" : "Enter the safe code",
    "EnterCode_0" : "Blood splatters across the wall, forming ominous symbols. Leaning closer, you try to decipher the encrypted writing, but the letters dance and slip away like ghosts in the night fog.<br>You can only recognize three numbers.",
    "EnterCode_01" : "A piece of the wall here consits of human skin, on which four numbers are carved:",
