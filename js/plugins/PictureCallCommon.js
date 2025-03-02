@@ -1,14 +1,13 @@
 //=============================================================================
-// PictureCallCommon.js
+// PictureCallCommon.js แปลภาษาไทยโดย วิศรุต เปรุนาวิน 
 // ----------------------------------------------------------------------------
+//  อนุญาตให้ใช้งานในเชิงพาณิชย์ได้ หากคุณมีน้ำใจ กรุณาให้เครดิต วิศรุต เปรุนาวิน ในเกมของคุณ
+// Free for commercial and non-commercial.
 // (C)2015 Triacontane
 // This plugin is released under the MIT License.
 // http://opensource.org/licenses/mit-license.php
 // ----------------------------------------------------------------------------
 // Version
-// 1.14.6 2024/09/07 競合回避用のコードを追加
-// 1.14.5 2023/02/20 ピクチャの紐付けがされていない状態でもマウスオーバー判定が裏で動作してしまう問題を修正
-// 1.14.4 2021/08/22 「並列処理として実行」のパラメータが戦闘画面には適用されない問題を修正
 // 1.14.3 2021/05/01 紐付け解除の際の設定値を変更
 // 1.14.2 2020/06/05 ヘルプのキーバインドにpagedownとpageupを追加
 // 1.14.1 2020/05/16 ヘルプのコマンド部分の紛らわしい記述を修正
@@ -233,7 +232,7 @@
  */
 /*:
  * @plugindesc Clickable picture plugin
- * @author triacontane
+ * @author triacontane แปลภาษาไทยโดย วิศรุต เปรุนาวิน Wisarut Perunawin
  *
  * @param TransparentConsideration
  * @desc if click position is transparent, click is disabled.
@@ -280,28 +279,36 @@
  * @default 0
  * @type switch
  *
- * @help When clicked picture, call common event.
+ * @help When clicked picture, call common event. 
+ * ปลั๊กอินทำงานโดยเมื่อคลิกที่รูปภาพจะเรียกใช้งาน Common Event
  *
- * Plugin Command
+ * Plugin Command คำสั่งปลั๊กอิน 
  *
  *  P_CALL_CE [Picture number] [Common event ID] [Trigger] [TransparentConsideration]:
- *      When picture was clicked, assign common event id.
- *  　　Trigger are As below(if omit, It is specified to 1)
- *      1  : Left click
- *      2  : Right click
- *      3  : Long click
- *      4  : Mouse over
- *      5  : Mouse out
- *      6  : Mouse release
- *      7  : Mouse repeat click
- *      8  : Mouse press
- *      9  : Wheel click
- *      10 : Double click
- *      11 : Mouse move
- *      12 : Mouse move and press
+ *      When picture was clicked, assign common event id. 
+ * เมื่อคลิกที่ภาพโดยอิงจากหมายเลขภาพ จะเรียกใช้ Common Event 
+ *  　　Trigger are As below(if omit, It is specified to 1) หมายเลขคำสั่งเมาส์
+ *      1  : Left click หมายเลข 1 คือ เมื่อคลิกเมาส์ซ้าย
+ *      2  : Right click หมายเลข 2 คือ เมื่อคลิกเมาส์ขวา
+ *      3  : Long click หมายเลข 3 คือ เมื่อคลิกซ้ายค้างไว้
+ *      4  : Mouse over หมายเลข 4 คือ เมื่อวางเมาส์บนรูปภาพ
+ *      5  : Mouse out หมายเลข 5 คือ เมื่อนำเมาส์ออกจากรูปภาพ
+ *      6  : Mouse release หมายเลข 6 คือ เมื่อปล่อยเมาส์
+ *      7  : Mouse repeat click หมายเลข 7 คือ เมื่อคลิกเมาส์ซ้ำๆ
+ *      8  : Mouse press หมายเลข 8 คือ เมื่อกดเมาส์ปุ่มไหนก็ได้
+ *      9  : Wheel click หมายเลข 9 คือ เมื่อกดที่ลูกกลิ้งเมาส์
+ *      10 : Double click หมายเลข 10 คือ เมื่อคลิกเมาส์ซ้าย 2 ครั้ง
+ *      11 : Mouse move หมายเลข 11 คือ เมื่อเมาส์เลื่อน
+ *      12 : Mouse move and press หมายเลข 12 คือ เมื่อเมาส์เลื่อนและคลิกเมาส์
+ *
+ *     ตัวอย่างคำสั่งปลั๊กอิน     P_CALL_CE 5 9 1  
+ *   หมายความว่า เมื่อคลิกเมาส์ซ้าย บนรูปหมายเลข 5 ให้เรียกใช้ Common Event หมายเลข 0009
  *
  *  P_CALL_CE_REMOVE [Picture number] :
  *      break relation from picture to common event.
+ *
+ * ตัวอย่างคำสั่งปลั๊กอิน  P_CALL_CE_REMOVE 5
+ * หมายความว่า  ยกเลิกการเชื่อมโยงรูปภาพหมายเลข 5 กับ Common Event
  *
  *  - Script
  *  $gameScreen.isPointerInnerPicture([ID]);
@@ -311,6 +318,8 @@
  *  ex：$gameScreen.isPointerInnerPicture(5);
  *
  *  This plugin is released under the MIT License.
+ * อนุญาตให้ใช้งานในเชิงพาณิชย์ได้ หากคุณมีน้ำใจ กรุณาให้เครดิต วิศรุต เปรุนาวิน ในเกมของคุณ
+* Free for commercial and non-commercial.
  */
 (function() {
     'use strict';
@@ -364,7 +373,7 @@
     };
 
     //=============================================================================
-    // パラメータの取得とバリデーション
+    // パラメータの取得とバリデーション  ตรวจสอบพารามิเตอร์
     //=============================================================================
     var paramGameVariableTouchX       = getParamNumber(['GameVariableTouchX', 'ポインタX座標の変数番号'], 0);
     var paramGameVariableTouchY       = getParamNumber(['GameVariableTouchY', 'ポインタY座標の変数番号'], 0);
@@ -378,7 +387,7 @@
 
     //=============================================================================
     // Game_Interpreter
-    //  プラグインコマンド[P_CALL_CE]などを追加定義します。
+    //  プラグインコマンド[P_CALL_CE]などを追加定義します。  คำสั่งปลั๊กอิน
     //=============================================================================
     var _Game_Interpreter_pluginCommand      = Game_Interpreter.prototype.pluginCommand;
     Game_Interpreter.prototype.pluginCommand = function(command, args) {
@@ -596,16 +605,6 @@
     //  ピクチャがタッチされたときのコモンイベント呼び出し処理を追加定義します。
     //=============================================================================
     Game_Troop.prototype.setupPictureCommonEvent = Game_Map.prototype.setupPictureCommonEvent;
-    Game_Troop.prototype.setupPictureParallelCommonEvent = Game_Map.prototype.setupPictureParallelCommonEvent;
-    Game_Troop.prototype.updatePictureCommonEvents = Game_Map.prototype.updatePictureCommonEvents;
-
-    Game_Troop.prototype.updateAllPictureCommonEvent = function() {
-        this.setupPictureCommonEvent();
-        this.setupPictureParallelCommonEvent();
-        if (this._pictureCommonEvents && this._pictureCommonEvents.length > 0) {
-            this.updatePictureCommonEvents();
-        }
-    };
 
     Game_Troop.prototype.isExistPictureCommon = function() {
         return this._interpreter.isSetupFromPicture();
@@ -738,7 +737,7 @@
     Scene_Base.prototype.getPictureSprite = function(pictureId) {
         var result = null;
         this._spriteset.iteratePictures(function(picture) {
-            if (picture instanceof Sprite_Picture && picture.isIdEquals(pictureId)) {
+            if (picture.isIdEquals(pictureId)) {
                 result = picture;
                 return false;
             }
@@ -778,7 +777,7 @@
     var _Scene_Battle_update      = Scene_Battle.prototype.update;
     Scene_Battle.prototype.update = function() {
         this.updateTouchPictures();
-        $gameTroop.updateAllPictureCommonEvent();
+        $gameTroop.setupPictureCommonEvent();
         _Scene_Battle_update.apply(this, arguments);
     };
 
@@ -859,21 +858,15 @@
     };
 
     Sprite_Picture.prototype.updateMouseMove = function() {
-        var commandIds = $gameScreen.getPictureCid(this._pictureId);
-        if (!commandIds) {
-            this._outMouse   = false;
-            this._wasOnMouse = false;
-            return;
-        }
         if (this.isIncludePointer()) {
             if (!this._wasOnMouse) {
                 this._onMouse    = true;
                 this._wasOnMouse = true;
             }
         } else if (this._wasOnMouse) {
-            this._outMouse   = true;
-            this._wasOnMouse = false;
-        }
+                this._outMouse   = true;
+                this._wasOnMouse = false;
+            }
     };
 
     Sprite_Picture.prototype.isIncludePointer = function() {

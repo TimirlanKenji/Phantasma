@@ -151,6 +151,6 @@
    "BlankAmmo_D":"Ammuniton light and sound (noise) are intended for imitation of a shot from the blank weapon. The ammuniton is harmless, shooting with the help of them is loud and spectacular.",
    "45АСР_D":"The caliber of your gun should start with .4",
    "Harpoon_D":"A steel projectile for an underwater gun. Capable of stopping an enemy for a while, pinning him to the surface.",
-   "Buckshot_D":"Buckshot",
+   "Buckshot_D":"12 gauge cartridge loaded with buckshot. «Heads up, gentlemen! This is buckshot, not crap!»",
    "ItemDescription":"NotUSe"
 }
