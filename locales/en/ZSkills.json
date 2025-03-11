@@ -152,7 +152,7 @@
    "D_SkillPerk20":"You in rage, filled with determination to fight the horrors.<br>Strike will deal damage equal to your stamina and strength.",
    "D_SkillPerk21":"Throw your leg forward and aim for the chest to knock your opponent down. This strike will deal damage equal to the sum of your Strength and Dexterity.",
    "D_SkillPerk22":"You've been injured enough to know that luck is not on your side. Adrenaline will give you speed, so you have the greatest chance of running away like a coward from this fight.",
-   "D_SkillPerk23":"Sometimes a situation calls for a creative approach. Your INTUITION score will now affect every check except for intuition itself.",
+   "D_SkillPerk23":"Sometimes a situation calls for a creative approach. Now, with a 10% chance, your INSIGHT stat will affect every check except for insight itself.",
    "STATES":"=======================STATES AND DESCRIPTION=======================",
    "Nokaut":"Knockout",
    "ZachitaS":"Defense",
