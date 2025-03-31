@@ -159,6 +159,7 @@
    "System20" : "Turn this ON if your monitor runs above 60 FPS to synchronize the game to run at 60 FPS.",
    "System21" : "Controls",
    "System22" : "Change the way you can control the game.",
+   "System23": "Do you want to choose this hero?",
    "PhantasmHotel" : "Phantasm Hotel",
    "Collection" : "Horror Collection",
    "Completion" : "Completion",
