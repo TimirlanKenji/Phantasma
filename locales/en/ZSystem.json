@@ -162,7 +162,7 @@
    "System23": "Do you want to choose this hero?",
    "PhantasmHotel" : "Phantasm Hotel",
    "Collection" : "Horror Collection",
-   "Completion" : "Completion",
+   "Completion" : "Completed",
    "Credits" : "Developers",
    "Credits1" : "Narrative designers<br>",
    "Credits1_1" : "Dmitry Shemyatin",
@@ -244,5 +244,5 @@
    "SystemText-51" : "Help",
    "SystemText-52" : "[+ 500 experience]",
    "SystemText-53" : "Slyaty",
-   "SystemText-54" : "Events"
+   "SystemText-54" : "Ingame events"
 }
