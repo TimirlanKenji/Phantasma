@@ -859,17 +859,10 @@ Scene_Picture_Gallery.prototype.setBackground = function() {
 //==============================
 // * Set Wheel Action
 //==============================
-Scene_Picture_Gallery.prototype.setWheelAction = function() {  
-    this._wheel_d = 5;
-	if (Imported.MOG_MenuBackground && this._wallpaper) {
-		if (TouchInput.wheelY > 0) {
-		   this.changePictureMode();
-		} else {
-		   this.setBackground();
-		};
-	} else {
-		this.changePictureMode();
-	};
+alias_TouchInputWeel = TouchInput._onWheel;
+    TouchInput._onWheel = function(event) {
+        if (SceneManager._scene instanceof Scene_Picture_Gallery) return;
+        alias_TouchInputWeel.call(this, event)
 };
 
 
