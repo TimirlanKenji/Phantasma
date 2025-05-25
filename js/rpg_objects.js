@@ -6362,7 +6362,7 @@ Game_CharacterBase.prototype.resetStopCount = function() {
 };
 
 Game_CharacterBase.prototype.realMoveSpeed = function() {
-    return this._moveSpeed + (this.isDashing() ? 1 : 0);
+    return this._moveSpeed + (this.isDashing() ? 0.5 : 0);
 };
 
 Game_CharacterBase.prototype.distancePerFrame = function() {
