@@ -152,6 +152,8 @@
    "Ev26_Ch3" : "[{PERK}] {SkillPerk08}",
    "Ev26_Ch3Des" : "{Ev26_Ch3}<br>Your muscles tense reflexively, years of training taking their toll. You rush forward, your legs cutting through the darkness, and behind you, the whisper of shadows, the stomping of madmen merging into a single mouth. A turn, a jump across the chasm, and now you are safe, but... the silence is too wary. The adrenaline is still boiling, but you know: they haven't left. They are waiting. And the next run will be longer.",
    "Termins":"=====================TERMINS============================",
+   "Loss_SAN99" : " [-99 Sanity] ",
+   "Loss_HP99" : " [-99 Health] ",
    "Statistic1_1":"went crazy on",
    "Statistic1_2":"went crazy on",
    "BlankShot_2":"Stunning Shot",
