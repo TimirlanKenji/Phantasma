@@ -1,10 +1,10 @@
 //=============================================================================
-// Change Equip On Battle, ver1.0.0
+// Change Equip On Battle, ver1.0.1
 //   by Unconnected42
 // Based on ChangeWeaponOnBattle, by Kannazuki Sasuke
 //
 // UNCO_ChangeEquipOnBattle.js
-// Last Updated : 2015/12/01
+// Last Updated : 2016/12/05
 //=============================================================================
 
 var Imported = Imported || {};
@@ -12,7 +12,6 @@ Imported.UNCO_ChangeEquip = true;
 
 var Unco = Unco || {};
 Unco.CEB = Unco.CEB || {};
-
 
 //=============================================================================
  /*:
@@ -161,16 +160,18 @@ Unco.CEB = Unco.CEB || {};
          for (var i = 0; i < notedata.length; i++) {
             var line = notedata[i];
             if (line.match(/<(?:BATTLE)[ ](?:CHANGE)[ ](?:EQUIP):[ ](.*)>/i)) {
-               var slotList = String(RegExp.$1).split(',');
-               for (var i in slotList) {
-                  var slot = parseInt(slotList[i])
-                  if (!isNaN(slot) && (slot > 0) && (!obj.equipChangeSlots.contains(slot))) obj.equipChangeSlots.push(slot);
-               }
+				var slotList = String(RegExp.$1).split(',');
+                for (var j in slotList) {
+                   var slot = parseInt(slotList[j]);
+                   if (!isNaN(slot) && (slot > 0) && (!obj.equipChangeSlots.contains(slot))) obj.equipChangeSlots.push(slot);
+                }
             }
          }
       }
+	  
    };
 
+	
 
    //=============================================================================
    // Window_BattleEquipStatus
@@ -529,4 +530,7 @@ Unco.CEB = Unco.CEB || {};
    };
    
    
+   
+   
 })();
+

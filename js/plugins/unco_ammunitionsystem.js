@@ -1,8 +1,8 @@
 //=============================================================================
-// Ammunition System, ver1.1.1
+// Ammunition System, ver1.1.7
 //   by Unconnected42
 // UNCO_AmmunitionSystem.js
-// Last Updated : 2015/12/15
+// Last Updated : 2016/12/11
 //=============================================================================
 
 var Imported = Imported || {};
@@ -63,6 +63,8 @@ Unco.AS = Unco.AS || {};
  * Introduction
  * ============================================
  * 
+ * ver1.1.7
+ *
  * This plug-in will allow skills or weapons to require the consumption of 
  * ammunition, components, etc. in order to work. The cost is  paid each 
  * time the skill is used, together with MP/TP costs, or each time the 
@@ -242,6 +244,44 @@ Unco.AS = Unco.AS || {};
  * Please that if you deactivate the ammo window or the display of remaining
  * ammo amount with the corresponding plug-in parameters, you will of course 
  * not see any description of ammunition !
+ *
+ * ============================================
+ * Change Log
+ * ============================================
+ *
+ * - 2016-12-11 : ver1.1.7 : fixed a bug that make the game crash in some menus when an actor had no weapon equipped.
+ * - 2016-11-16 : ver1.1.6 : maked ammo displayed even for normal attack if necessary.
+ * - 2016-11-15 : ver1.1.5 : fixed compatibility with Yanfly's Weapon Unleash.
+ * - 2016-06-11 : ver1.1.4 : fixed compatibility with Yanfly's ItemCore version 1.24
+ * - 2016-02-17 : ver1.1.3 : (supposedly?) corrected a bug that causes crashes 
+ *   when enemy attacks in some situations.
+ * - 2015-12-15 : ver1.1.2 : yet another bug correction.
+ * - 2015-12-15 : ver1.1.1 : corrected a bug that caused zero cost equip ammunition 
+ *   to be unequippable.
+ * - 2015-12-09 : ver1.1.0 : charged ammunition can now 'create' an 'empty' item when
+ *   their charge number is reduced to zero. Also, charged ammunition will show
+ *   their remaining charges in equip windows.
+ * - 2015-11-29 : ver1.0.0 : added charged ammunition feature. Fixed a (generally 
+ *   silent) bug that could make skills availables even in case of unsufficient
+ *   ammunition in some rare cases.
+ * - 2015-11-26 : ver0.4.4 : fixed an issue that caused equip-type ammo to be
+ *   equippable when it should not in some situations.
+ * - 2015-11-24 : ver0.4.3b : fixed an issue that caused ammo not to be consumed
+ *   in some situations when using older versions of Yanfly's ATB.
+ * - 2015-11-21 : ver0.4.3 : the previous changes made actually break the ammo cost 
+ *   implementation when ammo are NOT independent items, causing the ammo to be 
+ *   simply unequipped... Corrected now.
+ * - 2015-11-20 : ver0.4.2 : correction of the 'reload skills' feature so that 
+ *   indicating the correct equip slot for equip ammunition is no more necessary. 
+ *   Slight modification of how the cost of equip ammunition is managed internally,
+ *   so that it works more logically when independent ammo with variance is used.
+ * - 2015-11-15 : ver0.4.1 : corrected a bug causing a crash during battle when 
+ *   no weapon is equipped and the ammo amount is displayed next to attack command.
+ *   Also corrected a bug that could make the displayed cost in attack command incorrect.
+ * - 2015-11-15 : ver0.4.0 : added compact cost display, game switch dependency,
+ *   and weapon-type ammunition (for now, it is strongly recommended to use it only 
+ *   for weapons using themselves as ammo, such as throwing knives). Added extension Crafting System.
+ * 
  */
 //=============================================================================
 
@@ -501,6 +541,31 @@ DataManager.processUncoAmmoDescNotetags = function(group) {
    }
 };
 
+Unco.AS.hasAmmoCost = function(obj) {
+	if (typeof obj.goldCost == "number") {
+		if (obj.goldCost > 0) return true;
+	}
+	if (typeof obj.equipAmmoCost != "undefined") {
+		if (obj.equipAmmoCost.length > 0) return true;
+	}
+	if (typeof obj.equipChargeAmmoCost != "undefined") {
+		if (obj.equipChargeAmmoCost.length > 0) return true;
+	}
+	if (typeof obj.weaponAmmoCost != "undefined") {
+		if (obj.weaponAmmoCost.length > 0) return true;
+	}
+	if (typeof obj.weaponChargeAmmoCost != "undefined") {
+		if (obj.weaponChargeAmmoCost.length > 0) return true;
+	}
+	if (typeof obj.itemAmmoCost != "undefined") {
+		if (obj.itemAmmoCost.length > 0) return true;
+	}
+	if (typeof obj.ammoGameSwitch != "undefined") {
+		if (obj.ammoGameSwitch.length > 0) return true;
+	}
+	return false;
+}
+
 //=============================================================================
 // Game_Actor
 //=============================================================================
@@ -551,14 +616,16 @@ Game_BattlerBase.prototype.canEquipWeapon = function(item) {
       var ok = false;
       var wantedWeaponId = ( (typeof $dataWeapons[item.id].baseItemId === 'undefined') ? item.id : $dataWeapons[item.id].baseItemId );
       var EquippedWeaponId = 0;
-      if (this._equips[0].itemId() > 0) {
-         EquippedWeaponId = ( (typeof $dataWeapons[this._equips[0].itemId()].baseItemId === 'undefined') ? this._equips[0].itemId() : $dataWeapons[this._equips[0].itemId()].baseItemId );
-      }
+	  if (typeof this._equips[0].itemId != "undefined") {
+         if (this._equips[0].itemId() > 0) {
+            EquippedWeaponId = ( (typeof $dataWeapons[this._equips[0].itemId()].baseItemId === 'undefined') ? this._equips[0].itemId() : $dataWeapons[this._equips[0].itemId()].baseItemId );
+         }
+	  }
       for (var weaponId in $dataWeapons[item.id].isWeaponAmmoForWeapon) {
          weaponId = parseInt(weaponId);
          var ammoCost = parseInt( $dataWeapons[item.id].isWeaponAmmoForWeapon[weaponId] );
          ammoCost = (isNaN(ammoCost)) ? -1 : ammoCost ;
-         if (this._equips[0].itemId() > 0) {
+         if (EquippedWeaponId > 0) {
             if ((weaponId === EquippedWeaponId) && (ammoCost > -1)) {
                ok = true;
                break;
@@ -589,7 +656,10 @@ Game_Party.prototype.getItemAmount = function(baseItem) {
          maxItems = Yanfly.Param.ItemMaxArmors;
       }        
       if (maxItems > 0) {
-         if (baseItem.nonIndepdent === false) {
+         var nonIndep;
+         if (typeof baseItem.nonIndepdent === "boolean") nonIndep = baseItem.nonIndepdent;
+         if (typeof baseItem.nonIndependent === "boolean") nonIndep = baseItem.nonIndependent;
+         if (nonIndep === false) {
             if (DataManager.isItem(baseItem)) {
                baseItem = ( baseItem.baseItemId ? $dataItems[baseItem.baseItemId] : baseItem );
                var group = this.items();
@@ -623,7 +693,9 @@ Game_Party.prototype.getItemAmount = function(baseItem) {
 Unco.AS.Game_BattlerBase_canPaySkillCost =
    Game_BattlerBase.prototype.canPaySkillCost;
 Game_BattlerBase.prototype.canPaySkillCost = function(skill) {
-   if (!this.canPaySkillAmmoCost(skill)) return false;
+   if (this.isActor()) {
+      if (!this.canPaySkillAmmoCost(skill)) return false;
+   }
    return Unco.AS.Game_BattlerBase_canPaySkillCost.call(this, skill);
 };
 
@@ -689,7 +761,9 @@ Game_BattlerBase.prototype.canPaySkillAmmoCost = function(skill) {
    if (skill.id === this.attackSkillId()) {
       if (typeof this._equips !== 'undefined') {
          if (this._equips[0]._itemId > 0) {
-            skill = $dataWeapons[ ( (typeof $dataWeapons[this._equips[0]._itemId].baseItemId === 'undefined') ? this._equips[0]._itemId : $dataWeapons[this._equips[0]._itemId].baseItemId ) ];
+			if ( !Unco.AS.hasAmmoCost(skill) ) {
+               skill = $dataWeapons[ ( (typeof $dataWeapons[this._equips[0]._itemId].baseItemId === 'undefined') ? this._equips[0]._itemId : $dataWeapons[this._equips[0]._itemId].baseItemId ) ];
+			}
          }
       }
    }
@@ -826,14 +900,16 @@ Game_BattlerBase.prototype.canPaySkillWeaponChargeAmmoCost = function(skill) {
 Unco.AS.Game_BattlerBase_paySkillCost = Game_BattlerBase.prototype.paySkillCost;
 Game_BattlerBase.prototype.paySkillCost = function(skill) {
     Unco.AS.Game_BattlerBase_paySkillCost.call(this, skill);
-    this.paySkillAmmoCost(skill);
+    if (this.constructor.name === 'Game_Actor') this.paySkillAmmoCost(skill);
 };
 
 Game_BattlerBase.prototype.paySkillAmmoCost = function(skill) {
    if (skill.id === this.attackSkillId()) {
       if (typeof this._equips !== 'undefined') {
          if (this._equips[0]._itemId > 0) {
-            skill = $dataWeapons[ ( (typeof $dataWeapons[this._equips[0]._itemId].baseItemId === 'undefined') ? this._equips[0]._itemId : $dataWeapons[this._equips[0]._itemId].baseItemId ) ];
+			if ( !Unco.AS.hasAmmoCost(skill) ) {
+				skill = $dataWeapons[ ( (typeof $dataWeapons[this._equips[0]._itemId].baseItemId === 'undefined') ? this._equips[0]._itemId : $dataWeapons[this._equips[0]._itemId].baseItemId ) ];
+			}            
          }
       }
    }
@@ -1425,9 +1501,15 @@ Window_ActorCommand.prototype.getAmmoText = function(skill) {
 Unco.AS.Window_ActorCommand_addCommand = Window_ActorCommand.prototype.addCommand;
 if (Imported.BOB_BattleCommandList === true) {
    Window_ActorCommand.prototype.addCommand = function(name, symbol, enabled, ext, icon) {
-      if ((symbol === 'attack') && (this._actor._equips[0]) && (this._actor._equips[0]._itemId)) {
-         var ammoStr = this.getAmmoText($dataWeapons[this._actor._equips[0]._itemId]);
-         name = name + ammoStr;
+      if (symbol === 'attack') {
+		 var skill = $dataSkills[this._actor.attackSkillId()];
+		 if ( Unco.AS.hasAmmoCost(skill) ) {
+			var ammoStr = this.getAmmoText(skill);
+            name = name + ammoStr;
+		 } else if ( (this._actor._equips[0]) && (this._actor._equips[0]._itemId) ) {
+            var ammoStr = this.getAmmoText($dataWeapons[this._actor._equips[0]._itemId]);
+            name = name + ammoStr;
+         }
       }
       if (symbol === 'customSkill') {
          var ammoStr = this.getAmmoText(ext);
@@ -1436,13 +1518,46 @@ if (Imported.BOB_BattleCommandList === true) {
       Unco.AS.Window_ActorCommand_addCommand.call(this,name, symbol, enabled, ext, icon);
    };
 } else {
-   Window_ActorCommand.prototype.addCommand = function(name, symbol, enabled, ext) {
-      if ((symbol === 'attack') && (this._actor._equips[0]) && (this._actor._equips[0]._itemId)) {
-         var ammoStr = this.getAmmoText($dataWeapons[this._actor._equips[0]._itemId]);
+   if (Imported.YEP_WeaponUnleash) {
+	  Window_ActorCommand.prototype.addAttackCommand = function() {
+         Yanfly.WUL.Window_ActorCommand_addAttackCommand.call(this);
+         var index = this.findSymbol('attack');
+         if (index < 0) return;
+		 var skill = $dataSkills[this._actor.attackSkillId()];
+         var name = skill.commandAttackText;
+		 if ( Unco.AS.hasAmmoCost(skill) ) {
+			var ammoStr = this.getAmmoText(skill);
+            name = name + ammoStr;
+		 } else if ((this._actor._equips[0]) && (this._actor._equips[0]._itemId)) {
+            var ammoStr = this.getAmmoText($dataWeapons[this._actor._equips[0]._itemId]);
+            name = name + ammoStr;
+         }
+         this._list[index].name = name;
+      };
+	  Window_ActorCommand.prototype.addGuardCommand = function() {
+         Yanfly.WUL.Window_ActorCommand_addGuardCommand.call(this);
+         var index = this.findSymbol('guard');
+         if (index < 0) return;
+         var name = $dataSkills[this._actor.guardSkillId()].commandGuardText;
+		 var ammoStr = this.getAmmoText( $dataSkills[this._actor.guardSkillId()] );
          name = name + ammoStr;
-      }
-      Unco.AS.Window_ActorCommand_addCommand.call(this,name, symbol, enabled, ext);
-   };
+         this._list[index].name = name;
+      };
+   } else {	   
+      Window_ActorCommand.prototype.addCommand = function(name, symbol, enabled, ext) {
+         if (symbol === 'attack') {
+		    var skill = $dataSkills[this._actor.attackSkillId()];
+			if ( Unco.AS.hasAmmoCost(skill) ) {
+			   var ammoStr = this.getAmmoText(skill);
+               name = name + ammoStr;
+		    } else if ( (this._actor._equips[0]) && (this._actor._equips[0]._itemId)) {
+               var ammoStr = this.getAmmoText($dataWeapons[this._actor._equips[0]._itemId]);
+               name = name + ammoStr;
+			}
+         }
+         Unco.AS.Window_ActorCommand_addCommand.call(this,name, symbol, enabled, ext);
+      };
+   }
 }
 
 Unco.AS.Window_ActorCommand_setHelpWindowItem = Window_ActorCommand.prototype.setHelpWindowItem;
@@ -1460,7 +1575,9 @@ if (Imported.YEP_SkillCore === true) {
 // Window_Base
 //=============================================================================
    Window_Base.prototype.mustDrawActorAmmo = function(actor) {
-      if (typeof actor._equips !== 'undefined') {
+      var cond = typeof actor._equips !== 'undefined';
+      if (cond) cond = typeof actor._equips[0] !== 'undefined';
+      if (cond) {
          if (actor._equips[0]._itemId > 0) {
             skill = $dataWeapons[actor._equips[0]._itemId];
             for (var ammoId in skill.itemAmmoCost) {
@@ -1818,11 +1935,13 @@ Window_Ammo.prototype.setItem = function(actor,item) {
       if ((DataManager.isSkill(item)) && (Unco.Param.showAmmoLeftInDesc === 'true')) {
          var skill = item;
          if (skill.id === actor.attackSkillId()) {
-            if (typeof actor._equips !== 'undefined') {
-               if (actor._equips[0]._itemId > 0) {
-                  skill = $dataWeapons[ ( (typeof $dataWeapons[actor._equips[0]._itemId].baseItemId === 'undefined') ? actor._equips[0]._itemId : $dataWeapons[actor._equips[0]._itemId].baseItemId ) ];
+			if ( !Unco.AS.hasAmmoCost(skill) ) {
+               if (typeof actor._equips !== 'undefined') {
+                  if (actor._equips[0]._itemId > 0) {
+                     skill = $dataWeapons[ ( (typeof $dataWeapons[actor._equips[0]._itemId].baseItemId === 'undefined') ? actor._equips[0]._itemId : $dataWeapons[actor._equips[0]._itemId].baseItemId ) ];
+                  }
                }
-            }
+			}
          }
          //---------------------------------------------------//
          // - Item Cost
