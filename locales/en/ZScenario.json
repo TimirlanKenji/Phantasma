@@ -961,5 +961,6 @@
    "Gain_SAN5" : " [+5 Sanity] ",
    "Gain_HP1" : " [+1 Health] ",
    "Gain_HP2" : " [+2 Health] ",
-   "Gain_HP5" : " [+5 Health] "
+   "Gain_HP5" : " [+5 Health] ",
+   "Theme_00":"Goodbye"
 }
