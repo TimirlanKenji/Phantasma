@@ -435,7 +435,7 @@
    "Ev49_Ch2Fail" : "<br>The walls begin to move inexorably. You decide to jump, grab the edge of the gap and pull yourself up. Nothing works out for you - you fall and injure your leg. The spikes dig painfully into your skin, but you manage to get up at the last moment.",
    "Ev50_Name" : "A tall man <br>",
    "Ev50_Desc" : "Going out into the corridor you see a tall man with a sword in his hand.  He moves towards you, raising his blade to strike.",
-   "Ev50_Ch1" : "Attack the man",
+   "Ev50_Ch1" : "Push away and run",
    "Ev50_Ch2" : "Talk to him",
    "Ev50_Ch1Win" : "<br>YYou manage to dodge the sword and push the tall man hard. He steps back a little, but continues to push you. You decide not to tempt fate and retreat.",
    "Ev50_Ch1Fail" : "<br>It didn't work out for you. The sword severely scratched your shoulder and you slammed your whole body into the man, but he didn’t even budge. Pushing you back, he continues to advance on you, preparing his sword for the final blow. You decide to run.",
