@@ -88,5 +88,5 @@ var $plugins =
 {"name":"UNCO_AmmunitionSystem","status":true,"description":"Allows skills to need ammunition.\r\n<Unco Ammo>","parameters":{"Show Ammo Left When Actor Command":"false","Show Ammo Left In Help Window":"true","Help Window Ammo Text":"{Ammo02}","Show Ammo Left In Skill Window":"true","No Ammo Icon":"272","Gold Ammo Icon":"313","Ammo Font Size":"16","Ammo Font Color":"6","Show Ammo Left In Actor Command Window":"true","Compact Cost Display":"true"}},
 {"name":"JKL_PersistentData","status":true,"description":"Jackkel's Persistent Data Plugin (v5)","parameters":{"Persistent Switches":"1081-1140","Save Switches when Set":"true","Persistent Variables":"270-280","Save Variables when Set":"true"}},
 {"name":"MultiStateTitleScreen","status":true,"description":"v2.0.0 Title Overlay by Switches + Horror Effects Compat","parameters":{"BaseSwitchId":"1090","Overlay1Name":"Actor1","Overlay2Name":"Actor2","Overlay3Name":"Actor3","Overlay4Name":"Actor4","Overlay5Name":"Actor5","Overlay6Name":"Actor6","OverlayOpacity":"200","OverlayScale":"1.0"}},
-{"name":"OrangeGreenworks","status":false,"description":"Steamworks Integration <OrangeGreenworks>","parameters":{}}
+{"name":"OrangeGreenworks","status":true,"description":"Steamworks Integration <OrangeGreenworks>","parameters":{}}
 ];
