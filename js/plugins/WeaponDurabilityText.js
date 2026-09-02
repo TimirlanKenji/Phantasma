@@ -1,10 +1,13 @@
 /*:
 @target MV
-@plugindesc v3.0.0 Simple Weapon Durability + BattleLog warning v3.0.0
+@plugindesc v3.1.0 Simple Weapon Durability + BattleLog warning v3.1.0
 @author You
 @help
 Простая система прочности оружия без отображения процентов в меню.
 Игрок видит только предупреждение в боевом логе, когда прочность почти на нуле.
+
+Прочность снимается ТОЛЬКО при обычной атаке (attackSkillId).
+Использование навыков и предметов НЕ тратит прочность.
 
 Notetags (Weapons, Note):
   <DurabilityMax: 100>   // максимум прочности (по умолчанию 100)
@@ -26,7 +29,7 @@ Plugin Commands:
     var pluginName = 'WeaponDurabilityCore';
     var params = PluginManager.parameters(pluginName);
 
-    // базовые настройки (можешь оформить как plugin params при желании)
+    // базовые настройки
     var DefaultDrain       = Number(params['DefaultDrain'] || 5) || 5;
     var WarningThreshold   = Number(params['WarningThreshold'] || 10) || 10; // в процентах
     var BreakSEName        = String(params['BreakSEName'] || 'SE_MetalSheetFall');
@@ -36,15 +39,14 @@ Plugin Commands:
     // текст предупреждения в боевом логе
     // %1 = имя актёра, %2 = имя оружия, %3 = процент прочности
     var WarningText = String(params['WarningText'] ||
-        '"%2" {WeaponBreak1}');
+        '%1: оружие "%2" почти сломано (%3% прочности)!');
 
-    // === Notetags по оружию (чистый, безопасный вариант) ===
+    // === Notetags по оружию ===
     var _DataManager_extractMetadata = DataManager.extractMetadata;
     DataManager.extractMetadata = function(data) {
         _DataManager_extractMetadata.call(this, data);
         if (!data || typeof data !== 'object') return;
         if (!data.meta) return;
-        // "похоже на оружие": есть тип оружия и слот экипировки = 1
         var looksLikeWeapon = (data.wtypeId !== undefined && data.etypeId === 1);
         if (!looksLikeWeapon) return;
         data.durabilityMax   = Number(data.meta.DurabilityMax || 0) || 100;
@@ -52,9 +54,7 @@ Plugin Commands:
     };
 
     // === Хранилище прочности: по weaponId + actorId ===
-    // Да, это значит общая прочность для всех копий одного ID у актёра,
-    // но по твоему новому ТЗ это приемлемо (один тип оружия железно).
-    var DurMap = {}; // weaponId -> actorId -> { max, cur }
+    var DurMap = {}; // weaponId -> actorId -> { max, cur, warned }
 
     function ensureDurRecord(actorId, weaponId) {
         if (!weaponId || !$dataWeapons[weaponId] || !actorId) return null;
@@ -89,7 +89,6 @@ Plugin Commands:
     function breakWeapon(actor, weaponId) {
         if (!actor || !weaponId || !$dataWeapons[weaponId]) return;
 
-        // снимаем оружие из всех слотов, где оно стоит
         var equips = actor.equips();
         for (var i = 0; i < equips.length; i++) {
             var it = equips[i];
@@ -98,10 +97,8 @@ Plugin Commands:
             }
         }
 
-        // убираем одну копию этого оружия из инвентаря
         $gameParty.loseItem($dataWeapons[weaponId], 1, false);
 
-        // чистим хранилище прочности для этого оружия и актёра
         if (DurMap[weaponId] && DurMap[weaponId][actor.actorId()]) {
             delete DurMap[weaponId][actor.actorId()];
         }
@@ -113,13 +110,12 @@ Plugin Commands:
             pan: 0
         });
 
-        // сообщение о поломке можно тоже кинуть в battle log
         var scene = SceneManager._scene;
         if (scene && scene._logWindow) {
             scene._logWindow.addText(actor.name() + ' сломал оружие "' +
                                      $dataWeapons[weaponId].name + '"!');
         } else {
-            $gameMessage.add('{WeaponBreak}');
+            $gameMessage.add('Оружие сломано!');
         }
     }
 
@@ -148,48 +144,54 @@ Plugin Commands:
     var _Game_Action_apply = Game_Action.prototype.apply;
     Game_Action.prototype.apply = function(target) {
         _Game_Action_apply.call(this, target);
+
         var subject = this.subject();
-        if (subject && subject.isActor && subject.isActor() && subject.equips) {
-            var actor = subject;
-            var equips = actor.equips();
-            var weaponInstance = null;
-            for (var i = 0; i < equips.length; i++) {
-                if (equips[i] && equips[i].wtypeId !== undefined) {
-                    weaponInstance = equips[i];
-                    break;
-                }
-            }
-            if (weaponInstance) {
-                var weaponId = weaponInstance.id;
-                var tpl   = $dataWeapons[weaponId];
-                var rec   = ensureDurRecord(actor.actorId(), weaponId);
-                if (!rec) return;
-                var drain = (tpl && tpl.durabilityDrain != null) ? tpl.durabilityDrain : DefaultDrain;
-                rec.cur = Math.max(0, rec.cur - drain);
+        if (!subject || !subject.isActor || !subject.isActor()) return;
 
-                // предупреждение: один раз, когда процент <= порога
-                var percent = Math.round(rec.max > 0 ? rec.cur / rec.max * 100 : 0);
-                if (!rec.warned && percent > 0 && percent <= WarningThreshold) {
-                    rec.warned = true;
-                    var text = WarningText
-                        .replace('%1', actor.name())
-                        .replace('%2', tpl.name)
-                        .replace('%3', String(percent));
-                    var scene = SceneManager._scene;
-                    if (scene && scene._logWindow) {
-                        scene._logWindow.addText(text);
-                    } else {
-                        $gameMessage.add(text);
-                    }
-                }
+        // Тратим прочность ТОЛЬКО при обычной атаке
+        var attackSkillId = subject.attackSkillId();
+        if (this.item().id !== attackSkillId) return;
 
-                // поломка
-                if (rec.cur <= 0) {
-                    setTimeout(function() {
-                        breakWeapon(actor, weaponId);
-                    }, 16);
-                }
+        var actor = subject;
+        var equips = actor.equips();
+        var weaponInstance = null;
+        for (var i = 0; i < equips.length; i++) {
+            if (equips[i] && equips[i].wtypeId !== undefined) {
+                weaponInstance = equips[i];
+                break;
             }
+        }
+        if (!weaponInstance) return;
+
+        var weaponId = weaponInstance.id;
+        var tpl   = $dataWeapons[weaponId];
+        var rec   = ensureDurRecord(actor.actorId(), weaponId);
+        if (!rec) return;
+
+        var drain = (tpl && tpl.durabilityDrain != null) ? tpl.durabilityDrain : DefaultDrain;
+        rec.cur = Math.max(0, rec.cur - drain);
+
+        // предупреждение: один раз, когда процент <= порога
+        var percent = Math.round(rec.max > 0 ? rec.cur / rec.max * 100 : 0);
+        if (!rec.warned && percent > 0 && percent <= WarningThreshold) {
+            rec.warned = true;
+            var text = WarningText
+                .replace('%1', actor.name())
+                .replace('%2', tpl.name)
+                .replace('%3', String(percent));
+            var scene = SceneManager._scene;
+            if (scene && scene._logWindow) {
+                scene._logWindow.addText(text);
+            } else {
+                $gameMessage.add(text);
+            }
+        }
+
+        // поломка
+        if (rec.cur <= 0) {
+            setTimeout(function() {
+                breakWeapon(actor, weaponId);
+            }, 16);
         }
     };
 
