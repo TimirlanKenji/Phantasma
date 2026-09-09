@@ -160,7 +160,7 @@
    "D_SkillPerk21":"<WordWrap>This strike will deal damage equal to the sum of your STR and DEX.",
    "D_SkillPerk21_1":"<WordWrap>Throw your leg forward and aim for the chest to knock your opponent down. This strike will deal damage equal to the sum of your Strength and Dexterity.",
    "D_SkillPerk22":"<WordWrap>Whenever the world hits you on the forehead again instead of a reward, you stubbornly come back to life stronger than before, receiving +1 health, +1 sanity for each such slap in the face.",
-   "D_SkillPerk23":"<WordWrap>Sometimes a situation calls for a creative approach. Now, with a 10% chance, your INSIGHT stat will affect every check except for insight itself.",
+   "D_SkillPerk23":"<WordWrap>Sometimes a situation calls for a creative approach. Now, with a 20% chance, your INSIGHT stat will affect every check except for insight itself.",
    "STATES":"=======================STATES AND DESCRIPTION=======================",
    "Nokaut":"Knockout",
    "ZachitaS":"Defense",
