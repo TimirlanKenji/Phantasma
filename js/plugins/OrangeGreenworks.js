@@ -25,6 +25,7 @@ Hudell.OrangeGreenworks = Hudell.OrangeGreenworks || {};
 (function($) {
   "use strict";
 
+  // === DEFAULT FALLBACK FUNCTIONS (работают без Steam) ===
   $.getScreenName = function() {
     return 'Play Test';
   };
@@ -104,247 +105,238 @@ Hudell.OrangeGreenworks = Hudell.OrangeGreenworks || {};
     return false;
   };
 
+  // === STEAM INTEGRATION (только если запущено в NW.js) ===
   if (Utils.isNwjs()) {
     $.initialized = false;
 
     try {
+      // Попытка загрузить greenworks
       $.greenworks = require('./greenworks');
     }
     catch(e) {
       $.greenworks = false;
-      console.log('Greenworks failed to load. Make sure you copied all files from the Steamworks SDK to the right folders;');
-      console.log('http://hudell.com/blog/orange-greenworks');
-      console.error(e);
+      console.log('Greenworks not loaded - running in fallback mode (no Steam)');
+      console.log('To enable Steam, place greenworks.node file in the project folder');
+      // НЕ выбрасываем ошибку - просто работаем без Steam
     }
 
-    if (!!$.greenworks) {
-      $.initialized = $.greenworks.initAPI();
+    if ($.greenworks) {
+      try {
+        $.initialized = $.greenworks.initAPI();
 
-      if (!$.initialized) {
-        console.log('Greenworks failed to initialize.');
-        return;
+        if (!$.initialized) {
+          console.log('Greenworks failed to initialize - Steam may not be running');
+          $.greenworks = false;
+          return;
+        }
+
+        $.steamId = $.greenworks.getSteamId();
+        console.log('Steam User: ', $.steamId.screenName);
+
+        // Переопределяем функции для работы с Steam
+        $.getScreenName = function() {
+          return $.steamId.screenName;
+        };
+
+        $.getUILanguage = function() {
+          return $.greenworks.getCurrentUILanguage();
+        };
+
+        $.getGameLanguage = function() {
+          return $.greenworks.getCurrentGameLanguage();
+        };
+
+        $.isSteamRunning = function() {
+          return $.greenworks.isSteamRunning();
+        };
+
+        $._storeStatsSuccess = function(){
+          console.log('Stored Stats Successfully', arguments);
+        };
+
+        $._storeStatsError = function(){
+          console.log('Failed to Store Stats', arguments);
+        };
+
+        $._achievementSuccess = function(){
+          console.log('Achievement activated', arguments);
+        };
+
+        $._achievementError = function(){
+          console.log('Achievement activation error', arguments);
+        };
+
+        $._clearAchievementSuccess = function(){
+          console.log('Successfully Cleared Achievement', arguments);
+        };
+
+        $._clearAchievementError = function(){
+          console.log('Failed to Clear Achievement', arguments);
+        };
+
+        $._getAchievementSuccess = function(){
+        };
+
+        $._getAchievementError = function(){
+          console.log('Failed to check Achievement', arguments);
+        };
+
+        $.activateAchievement = function(achievementName) {
+          if (!achievementName) {
+            console.log('Achievement name not provided.');
+            return;
+          }
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return;
+          }
+          $.greenworks.activateAchievement(achievementName, $._achievementSuccess, $._achievementError);
+        };
+
+        $.getAchievement = function(achievementName) {
+          if (!achievementName) {
+            console.log('Achievement name not provided.');
+            return false;
+          }
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          return $.greenworks.getAchievement(achievementName, $._getAchievementSuccess, $._getAchievementError);        
+        };
+
+        $.clearAchievement = function(achievementName) {
+          if (!achievementName) {
+            console.log('Achievement name not provided.');
+            return false;
+          }
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          $.greenworks.clearAchievement(achievementName, $._clearAchievementSuccess, $._clearAchievementError);                
+        };
+
+        $.getNumberOfAchievements = function() {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          return $.greenworks.getNumberOfAchievements();
+        };
+
+        $.activateGameOverlay = function(option) {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          $.greenworks.activateGameOverlay(option);
+        };
+
+        $.isGameOverlayEnabled = function() {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          return $.greenworks.isGameOverlayEnabled();
+        };
+
+        $.activateGameOverlayToWebPage = function(url) {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          $.greenworks.activateGameOverlayToWebPage(url);
+        };
+
+        $.isSubscribedApp = function(appId) {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          return $.greenworks.isSubscribedApp(appId);
+        };
+
+        $.getDLCCount = function() {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return 0;
+          }
+          return $.greenworks.getDLCCount();
+        };
+
+        $.isDLCInstalled = function(dlcAppId) {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          return $.greenworks.isDLCInstalled(dlcAppId);
+        };
+
+        $.installDLC = function(dlcAppId) {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          $.greenworks.installDLC(dlcAppId);
+        };
+
+        $.uninstallDLC = function(dlcAppId) {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          $.greenworks.uninstallDLC(dlcAppId);
+        };
+
+        $.getStatInt = function(name) {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return 0;
+          }
+          return $.greenworks.getStatInt(name);
+        };
+
+        $.getStatFloat = function(name) {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return 0;
+          }
+          return $.greenworks.getStatFloat(name);
+        };
+
+        $.setStat = function(name, value) {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          return $.greenworks.setStat(name, value);
+        };
+
+        $.storeStats = function() {
+          if (!$.isSteamRunning()) {
+            console.log('Steam isn\'t running');
+            return false;
+          }
+          return $.greenworks.storeStats($._storeStatsSuccess, $._storeStatsError);
+        };
+
+        $.getFriendCount = function() {
+          return $.greenworks.getFriendCount($.greenworks.FriendFlags.Immediate);
+        };
+
+        $.isCloudEnabled = function() {
+          return $.greenworks.isCloudEnabled();
+        };
+
+        $.isCloudEnabledForUser = function() {
+          return $.greenworks.isCloudEnabledForUser();
+        };
+        
+      } catch (e) {
+        console.error('Greenworks initialization error:', e);
+        $.greenworks = false;
       }
-
-      $.steamId = $.greenworks.getSteamId();
-      console.log('Steam User: ', $.steamId.screenName);
-
-      $.getScreenName = function() {
-        return $.steamId.screenName;
-      };
-
-      $.getUILanguage = function() {
-        return $.greenworks.getCurrentUILanguage();
-      };
-
-      $.getGameLanguage = function() {
-        return $.greenworks.getCurrentGameLanguage();
-      };
-
-      $.isSteamRunning = function() {
-        return $.greenworks.isSteamRunning();
-      };
-
-      $._storeStatsSuccess = function(){
-        console.log('Stored Stats Successfully', arguments);
-      };
-
-      $._storeStatsError = function(){
-        console.log('Failed to Store Stats', arguments);
-      };
-
-      $._achievementSuccess = function(){
-        console.log('Achievement activated', arguments);
-      };
-
-      $._achievementError = function(){
-        console.log('Achievement activation error', arguments);
-      };
-
-      $._clearAchievementSuccess = function(){
-        console.log('Successfully Cleared Achievement', arguments);
-      };
-
-      $._clearAchievementError = function(){
-        console.log('Failed to Clear Achievement', arguments);
-      };
-
-      $._getAchievementSuccess = function(){
-      };
-
-      $._getAchievementError = function(){
-        console.log('Failed to check Achievement', arguments);
-      };
-
-      $.activateAchievement = function(achievementName) {
-        if (!achievementName) {
-          console.log('Achievement name not provided.');
-          return;
-        }
-
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return;
-        }
-        
-        $.greenworks.activateAchievement(achievementName, $._achievementSuccess, $._achievementError);
-      };
-
-      $.getAchievement = function(achievementName) {
-        if (!achievementName) {
-          console.log('Achievement name not provided.');
-          return false;
-        }
-
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        return $.greenworks.getAchievement(achievementName, $._getAchievementSuccess, $._getAchievementError);        
-      };
-
-      $.clearAchievement = function(achievementName) {
-        if (!achievementName) {
-          console.log('Achievement name not provided.');
-          return false;
-        }
-
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        $.greenworks.clearAchievement(achievementName, $._clearAchievementSuccess, $._clearAchievementError);                
-      };
-
-      $.getNumberOfAchievements = function() {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        return $.greenworks.getNumberOfAchievements();
-      };
-
-      $.activateGameOverlay = function(option) {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        $.greenworks.activateGameOverlay(option);
-      };
-
-      $.isGameOverlayEnabled = function() {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        return $.greenworks.isGameOverlayEnabled();
-      };
-
-      $.activateGameOverlayToWebPage = function(url) {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        $.greenworks.activateGameOverlayToWebPage(url);
-      };
-
-      $.isSubscribedApp = function(appId) {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        return $.greenworks.isSubscribedApp(appId);
-      };
-
-      $.getDLCCount = function() {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return 0;
-        }
-        
-        return $.greenworks.getDLCCount();
-      };
-
-      $.isDLCInstalled = function(dlcAppId) {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        return $.greenworks.isDLCInstalled(dlcAppId);
-      };
-
-      $.installDLC = function(dlcAppId) {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        $.greenworks.installDLC(dlcAppId);
-      };
-
-      $.uninstallDLC = function(dlcAppId) {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        $.greenworks.uninstallDLC(dlcAppId);
-      };
-
-      $.getStatInt = function(name) {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return 0;
-        }
-        
-        return $.greenworks.getStatInt(name);
-      };
-
-      $.getStatFloat = function(name) {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return 0;
-        }
-        
-        return $.greenworks.getStatFloat(name);
-      };
-
-      $.setStat = function(name, value) {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        return $.greenworks.setStat(name, value);
-      };
-
-      $.storeStats = function() {
-        if (!$.isSteamRunning()) {
-          console.log('Steam isn\'t running');
-          return false;
-        }
-        
-        return $.greenworks.setStat($._storeStatsSuccess, $._storeStatsError);
-      };
-
-      $.getFriendCount = function() {
-        return $.greenworks.getFriendCount($.greenworks.FriendFlags.Immediate);
-      };
-
-      $.isCloudEnabled = function() {
-        return $.greenworks.isCloudEnabled();
-      };
-
-      $.isCloudEnabledForUser = function() {
-        return $.greenworks.isCloudEnabledForUser();
-      };
     }
   }
 })(Hudell.OrangeGreenworks);
