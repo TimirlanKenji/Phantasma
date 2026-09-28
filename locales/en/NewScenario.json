@@ -16,5 +16,7 @@
    "YouReturned":"You returned ",
    "Cigarette1":"<WordWrap>Relaxes you a bit, relieves stress (+2 Sanity)",
    "D_JuicePack":"<WordWrap>A small juice pack. Revitalizing orange nectar gives your tired body a slight boost (+2 health)",
+   "D_SkillPerk22_loser_short":"<WordWrap>On a failed event, randomly gain +1 Health, +1 Sanity, or +1 Count.",
+   "D_SkillPerk25_short":"<WordWrap>Summon Rose Protection to<br>reduce damage taken for 5 turns.",
    "LastReplics2":"DontDeleted"
 }

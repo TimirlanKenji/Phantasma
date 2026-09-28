@@ -15,6 +15,8 @@
    "Termins2":"=====================TERMINS============================",
    "YouReturned":"你回来了 ",
    "Cigarette1": "<自动换行>放松一下，缓解压力（+2理智值）",
-   "D_JuicePack": "<WordWrap>一小包果汁。提神的橙汁能缓解你疲惫的身体（+2 健康值）。"
+   "D_JuicePack": "<WordWrap>一小包果汁。提神的橙汁能缓解你疲惫的身体（+2 健康值）。",
+   "D_SkillPerk22_loser_short":"<WordWrap>事件失败时，随机获得+1生命值、+1理智值或+1倒计时。",
+   "D_SkillPerk25_short":"<WordWrap>召唤玫瑰守护，<br>减少受到的伤害，持续5回合。",
    "LastReplics2":"DontDeleted"
 }

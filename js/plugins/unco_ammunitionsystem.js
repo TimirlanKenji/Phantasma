@@ -756,30 +756,36 @@ Game_BattlerBase.prototype.fillAmmoCharges = function(item) {
       }
    }
 };
-
 Game_BattlerBase.prototype.canPaySkillAmmoCost = function(skill) {
-   if (skill.id === this.attackSkillId()) {
-      if (typeof this._equips !== 'undefined') {
-         if (this._equips[0]._itemId > 0) {
-			if ( !Unco.AS.hasAmmoCost(skill) ) {
-               skill = $dataWeapons[ ( (typeof $dataWeapons[this._equips[0]._itemId].baseItemId === 'undefined') ? this._equips[0]._itemId : $dataWeapons[this._equips[0]._itemId].baseItemId ) ];
-			}
-         }
-      }
-   }
-   for (var switchId in skill.ammoGameSwitch) {
-      switchId = parseInt(switchId);
-      if (!isNaN(switchId) && (switchId > 0)) {
-         if ($gameSwitches.value(switchId) === false) {
-            return false;
-         }
-      }
-   }
-   if (!this.canPaySkillReloadAmmoCost(skill)) return false;
-   if (!this.canPaySkillItemAmmoCost(skill)) return false;
-   if (!this.canPaySkillEquipAmmoCost(skill)) return false;
-   if (!this.canPaySkillEquipChargeAmmoCost(skill)) return false;
-   return true;
+    if (skill.id === this.attackSkillId()) {
+        if (typeof this._equips !== 'undefined') {
+            if (this._equips[0]._itemId > 0) {
+                if (!Unco.AS.hasAmmoCost(skill)) {
+                    // ← ← ← ДОБАВЬ ПРОВЕРКУ
+                    var weapon = $dataWeapons[this._equips[0]._itemId];
+                    if (!weapon) {
+                        console.warn('[UNCO Ammo] Weapon ID ' + this._equips[0]._itemId + ' not found');
+                        return true;
+                    }
+                    // ← ← ←
+                    skill = $dataWeapons[((typeof weapon.baseItemId === 'undefined') ? this._equips[0]._itemId : weapon.baseItemId)];
+                }
+            }
+        }
+    }
+    for (var switchId in skill.ammoGameSwitch) {
+        switchId = parseInt(switchId);
+        if (!isNaN(switchId) && (switchId > 0)) {
+            if ($gameSwitches.value(switchId) === false) {
+                return false;
+            }
+        }
+    }
+    if (!this.canPaySkillReloadAmmoCost(skill)) return false;
+    if (!this.canPaySkillItemAmmoCost(skill)) return false;
+    if (!this.canPaySkillEquipAmmoCost(skill)) return false;
+    if (!this.canPaySkillEquipChargeAmmoCost(skill)) return false;
+    return true;
 };
 
 Game_BattlerBase.prototype.canPaySkillReloadAmmoCost = function(skill) {
@@ -792,21 +798,26 @@ Game_BattlerBase.prototype.canPaySkillReloadAmmoCost = function(skill) {
 };
 
 Game_BattlerBase.prototype.canPaySkillItemAmmoCost = function(skill) {
-   if (typeof skill.goldCost === 'number') {
-      if (skill.goldCost > $gameParty.gold()) {
-         return false;
-      }
-   }
-   for (var ammoId in skill.itemAmmoCost) {
-      ammoId = parseInt(ammoId);
-      if (!isNaN(ammoId) && (ammoId > 0)) {
-         var nbOwned = $gameParty.getItemAmount($dataItems[ammoId]);
-         if (skill.itemAmmoCost[ammoId] > nbOwned) {
+    if (typeof skill.goldCost === 'number') {
+        if (skill.goldCost > $gameParty.gold()) {
             return false;
-         }
-      }
-   }
-   return true;
+        }
+    }
+    for (var ammoId in skill.itemAmmoCost) {
+        ammoId = parseInt(ammoId);
+        if (!isNaN(ammoId) && (ammoId > 0)) {
+            var item = $dataItems[ammoId];
+            if (!item) {
+                console.warn('[UNCO Ammo] Item ID ' + ammoId + ' not found for skill ' + skill.id);
+                return false;
+            }
+            var nbOwned = $gameParty.getItemAmount(item);
+            if (skill.itemAmmoCost[ammoId] > nbOwned) {
+                return false;
+            }
+        }
+    }
+    return true;
 };
 
 Game_BattlerBase.prototype.canPaySkillEquipAmmoCost = function(skill) {
@@ -902,23 +913,28 @@ Game_BattlerBase.prototype.paySkillCost = function(skill) {
     Unco.AS.Game_BattlerBase_paySkillCost.call(this, skill);
     if (this.constructor.name === 'Game_Actor') this.paySkillAmmoCost(skill);
 };
-
 Game_BattlerBase.prototype.paySkillAmmoCost = function(skill) {
-   if (skill.id === this.attackSkillId()) {
-      if (typeof this._equips !== 'undefined') {
-         if (this._equips[0]._itemId > 0) {
-			if ( !Unco.AS.hasAmmoCost(skill) ) {
-				skill = $dataWeapons[ ( (typeof $dataWeapons[this._equips[0]._itemId].baseItemId === 'undefined') ? this._equips[0]._itemId : $dataWeapons[this._equips[0]._itemId].baseItemId ) ];
-			}            
-         }
-      }
-   }
-   this.reloadAmmo(skill);
-   this.paySkillItemAmmoCost(skill);
-   this.paySkillEquipAmmoCost(skill);
-   this.paySkillEquipChargeAmmoCost(skill);
+    if (skill.id === this.attackSkillId()) {
+        if (typeof this._equips !== 'undefined') {
+            if (this._equips[0]._itemId > 0) {
+                if (!Unco.AS.hasAmmoCost(skill)) {
+                    // ← ← ← ДОБАВЬ ПРОВЕРКУ
+                    var weapon = $dataWeapons[this._equips[0]._itemId];
+                    if (!weapon) {
+                        console.warn('[UNCO Ammo] Weapon ID ' + this._equips[0]._itemId + ' not found in paySkillAmmoCost');
+                        return;
+                    }
+                    // ← ← ←
+                    skill = $dataWeapons[((typeof weapon.baseItemId === 'undefined') ? this._equips[0]._itemId : weapon.baseItemId)];
+                }
+            }
+        }
+    }
+    this.reloadAmmo(skill);
+    this.paySkillItemAmmoCost(skill);
+    this.paySkillEquipAmmoCost(skill);
+    this.paySkillEquipChargeAmmoCost(skill);
 };
-
 Game_BattlerBase.prototype.reloadAmmo = function(skill) {
    if ((typeof skill.ammoLoadIndex === 'number') && (typeof skill.ammoLoadSlot === 'number')) {
       var loadSlot = skill.ammoLoadSlot;
@@ -1126,12 +1142,17 @@ Window_SkillList.prototype.drawAllAmmoCosts = function(skill, wx, wy, dw) {
    //---------------------------------------------------//
    // - Item Cost
    for (var ammoId in skill.itemAmmoCost) {
-      ammoId = parseInt(ammoId);
-      if (!isNaN(ammoId) && (ammoId > 0)) {
-         var ammoCost = skill.itemAmmoCost[ammoId];
-         var icon = $dataItems[ammoId].iconIndex;
-         var amountText = ( (Unco.Param.showAmmoLeft === 'false') ? "" : (  "/" + $gameParty.getItemAmount($dataItems[ammoId])  )  );
-         dw = this.drawAmmoCost(ammoCost, icon, amountText, wx, wy, dw);
+    ammoId = parseInt(ammoId);
+    if (!isNaN(ammoId) && (ammoId > 0)) {
+        // ← ← ← ДОБАВЬ
+        var item = $dataItems[ammoId];
+        if (!item) continue;  // Пропустить, если предмет не найден
+        // ← ← ←
+        
+        var ammoCost = skill.itemAmmoCost[ammoId];
+        var icon = item.iconIndex;
+        var amountText = ((Unco.Param.showAmmoLeft === 'false') ? "" : ("/" + $gameParty.getItemAmount(item)));
+        dw = this.drawAmmoCost(ammoCost, icon, amountText, wx, wy, dw);
       }
    }
    //---------------------------------------------------//
@@ -1271,15 +1292,20 @@ Window_Help.prototype.getAmmoAmountText = function(item) {
          //---------------------------------------------------//
          // - Item Cost
          for (var ammoId in skill.itemAmmoCost) {
-            var cost = skill.itemAmmoCost[ammoId];
-            ammoId = parseInt(ammoId);
-            if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(cost)) {
-               var cost = parseInt(cost);
-               var itemOwned = ($gameParty.getItemAmount($dataItems[ammoId]) > 0);
-               text = text + '\\i[' + String($dataItems[ammoId].iconIndex) + ']';
-               text = text + ( (typeof skill.showAmmoName === 'undefined') ? '' : $dataItems[ammoId].name + ' ' );
-               text = text + ( ((cost <= 0) && itemOwned) ? '' : ( 'x' + String( $gameParty.getItemAmount($dataItems[ammoId]) ) )  );
-               withAmmo = true;
+    var cost = skill.itemAmmoCost[ammoId];
+    ammoId = parseInt(ammoId);
+    if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(cost)) {
+        // ← ← ← ДОБАВЬ
+        var item = $dataItems[ammoId];
+        if (!item) continue;
+        // ← ← ←
+        
+        var cost = parseInt(cost);
+        var itemOwned = ($gameParty.getItemAmount(item) > 0);
+        text = text + '\\i[' + String(item.iconIndex) + ']';
+        text = text + ((typeof skill.showAmmoName === 'undefined') ? '' : item.name + ' ');
+        text = text + (((cost <= 0) && itemOwned) ? '' : ('x' + String($gameParty.getItemAmount(item))));
+        withAmmo = true;
             }
          }
          //---------------------------------------------------//
@@ -1393,111 +1419,127 @@ Window_SkillList.prototype.setHelpWindowItem = function(item) {
 //=============================================================================
 // Window_ActorCommand
 //=============================================================================
-
 Window_ActorCommand.prototype.getAmmoText = function(skill) {
-    var ammoStr = '';  
+    var ammoStr = '';
+    
+    if (!skill) {
+        console.warn('[UNCO Ammo] Skill is undefined in getAmmoText');
+        return '';
+    }
+    
     if (Unco.Param.showAmmoLeftForAttack === 'true') {
-          //---------------------------------------------------//
-          // - Item Cost
-          for (var ammoId in skill.itemAmmoCost) {
-             var ammoId = parseInt(ammoId);
-             var ammoCost = parseInt(skill.itemAmmoCost[ammoId]);
-             if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(ammoCost) && (ammoCost > 0)) {
+        //---------------------------------------------------//
+        // - Item Cost
+        if (skill.itemAmmoCost) {
+            for (var ammoId in skill.itemAmmoCost) {
+                var ammoId = parseInt(ammoId);
+                var ammoCost = parseInt(skill.itemAmmoCost[ammoId]);
+                if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(ammoCost) && (ammoCost > 0)) {
+                    var item = $dataItems[ammoId];
+                    if (!item) continue;
+                    if (ammoStr !== '') ammoStr += '|';
+                    ammoStr += String($gameParty.getItemAmount(item));
+                }
+            }
+        }
+        //---------------------------------------------------//
+        // - Armor Cost
+        if (skill.equipAmmoCost) {
+            var zeroAmmo = false;
+            for (var ammoId in skill.equipAmmoCost) {
+                var ammoId = parseInt(ammoId);
+                var ammoCost = parseInt(skill.equipAmmoCost[ammoId]);
+                if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(ammoCost) && (ammoCost > 0)) {
+                    if (this._actor.hasArmor($dataArmors[ammoId])) {
+                        if (ammoStr !== '') ammoStr += '|';
+                        ammoStr += String(1 + $gameParty.getItemAmount($dataArmors[ammoId]));
+                        zeroAmmo = false;
+                        break;
+                    } else {
+                        zeroAmmo = true;
+                    }
+                }
+            }
+            if (zeroAmmo === true) {
                 if (ammoStr !== '') ammoStr += '|';
-                ammoStr += String(  $gameParty.getItemAmount($dataItems[ammoId]) );               
-             }
-          }
-          //---------------------------------------------------//
-          // - Armor Cost
-          var zeroAmmo = false;
-          for (var ammoId in skill.equipAmmoCost) {
-             var ammoId = parseInt(ammoId);
-             var ammoCost = parseInt(skill.equipAmmoCost[ammoId]);
-             if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(ammoCost) && (ammoCost > 0)) {
-                if (this._actor.hasArmor($dataArmors[ammoId])) {
-                   if (ammoStr !== '') ammoStr += '|';
-                   ammoStr += String( 1+$gameParty.getItemAmount($dataArmors[ammoId]) );
-                   zeroAmmo = false;
-                   break;
-                } else {
-                   zeroAmmo = true;
+                ammoStr += '0';
+            }
+        }
+        //---------------------------------------------------//
+        // - Weapon Cost
+        if (skill.weaponAmmoCost) {
+            var zeroWeaponAmmo = false;
+            for (var ammoId in skill.weaponAmmoCost) {
+                var ammoId = parseInt(ammoId);
+                var ammoCost = parseInt(skill.weaponAmmoCost[ammoId]);
+                if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(ammoCost) && (ammoCost > 0)) {
+                    if (this._actor.hasWeapon($dataWeapons[ammoId])) {
+                        if (ammoStr !== '') ammoStr += '|';
+                        ammoStr += String(1 + $gameParty.getItemAmount($dataWeapons[ammoId]));
+                        zeroWeaponAmmo = false;
+                        break;
+                    } else {
+                        zeroWeaponAmmo = true;
+                    }
                 }
-             }
-          }
-          if (zeroAmmo === true) {
-             if (ammoStr !== '') ammoStr += '|';
-             ammoStr += '0';
-          }
-          //---------------------------------------------------//
-          // - Weapon Cost
-          var zeroWeaponAmmo = false;
-          for (var ammoId in skill.weaponAmmoCost) {
-             var ammoId = parseInt(ammoId);
-             var ammoCost = parseInt(skill.weaponAmmoCost[ammoId]);
-             if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(ammoCost) && (ammoCost > 0)) {
-                if (this._actor.hasWeapon($dataWeapons[ammoId])) {
-                   if (ammoStr !== '') ammoStr += '|';
-                   ammoStr += String( 1+$gameParty.getItemAmount($dataWeapons[ammoId]) );
-                   zeroWeaponAmmo = false;
-                   break;
-                } else {
-                   zeroWeaponAmmo = true;
+            }
+            if (zeroWeaponAmmo === true) {
+                if (ammoStr !== '') ammoStr += '|';
+                ammoStr += '0';
+            }
+        }
+        //---------------------------------------------------//
+        // - Charge Armor Cost
+        if (skill.equipChargeAmmoCost) {
+            var zeroChargeAmmo = false;
+            for (var ammoId in skill.equipChargeAmmoCost) {
+                var ammoId = parseInt(ammoId);
+                var ammoCost = parseInt(skill.equipChargeAmmoCost[ammoId]);
+                if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(ammoCost) && (ammoCost > 0)) {
+                    if (this._actor.hasArmor($dataArmors[ammoId])) {
+                        if (ammoStr !== '') ammoStr += '|';
+                        ammoStr += String(this._actor.getAmmoCurrentCharges($dataArmors[ammoId]));
+                        zeroChargeAmmo = false;
+                        break;
+                    } else {
+                        zeroChargeAmmo = true;
+                    }
                 }
-             }
-          }
-          if (zeroWeaponAmmo === true) {
-             if (ammoStr !== '') ammoStr += '|';
-             ammoStr += '0';
-          }
-          //---------------------------------------------------//
-          // - Charge Armor Cost
-          var zeroChargeAmmo = false;
-          for (var ammoId in skill.equipChargeAmmoCost) {
-             var ammoId = parseInt(ammoId);
-             var ammoCost = parseInt(skill.equipChargeAmmoCost[ammoId]);
-             if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(ammoCost) && (ammoCost > 0)) {
-                if (this._actor.hasArmor($dataArmors[ammoId])) {
-                   if (ammoStr !== '') ammoStr += '|';
-                   ammoStr += String( this._actor.getAmmoCurrentCharges($dataArmors[ammoId]) );
-                   zeroChargeAmmo = false;
-                   break;
-                } else {
-                   zeroChargeAmmo = true;
+            }
+            if (zeroChargeAmmo === true) {
+                if (ammoStr !== '') ammoStr += '|';
+                ammoStr += '0';
+            }
+        }
+        //---------------------------------------------------//
+        // - Charge Weapon Cost
+        if (skill.weaponChargeAmmoCost) {
+            var zeroChargeWeaponAmmo = false;
+            for (var ammoId in skill.weaponChargeAmmoCost) {
+                var ammoId = parseInt(ammoId);
+                var ammoCost = parseInt(skill.weaponChargeAmmoCost[ammoId]);
+                if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(ammoCost) && (ammoCost > 0)) {
+                    if (this._actor.hasWeapon($dataWeapons[ammoId])) {
+                        if (ammoStr !== '') ammoStr += '|';
+                        ammoStr += String(this._actor.getAmmoCurrentCharges($dataWeapons[ammoId]));
+                        zeroChargeWeaponAmmo = false;
+                        break;
+                    } else {
+                        zeroChargeWeaponAmmo = true;
+                    }
                 }
-             }
-          }
-          if (zeroChargeAmmo === true) {
-             if (ammoStr !== '') ammoStr += '|';
-             ammoStr += '0';
-          }
-          //---------------------------------------------------//
-          // - Charge Weapon Cost
-          var zeroChargeWeaponAmmo = false;
-          for (var ammoId in skill.weaponChargeAmmoCost) {
-             var ammoId = parseInt(ammoId);
-             var ammoCost = parseInt(skill.weaponChargeAmmoCost[ammoId]);
-             if (!isNaN(ammoId) && (ammoId > 0) && !isNaN(ammoCost) && (ammoCost > 0)) {
-                if (this._actor.hasWeapon($dataWeapons[ammoId])) {
-                   if (ammoStr !== '') ammoStr += '|';
-                   ammoStr += String( this._actor.getAmmoCurrentCharges($dataWeapons[ammoId]) );
-                   zeroChargeWeaponAmmo = false;
-                   break;
-                } else {
-                   zeroChargeWeaponAmmo = true;
-                }
-             }
-          }
-          if (zeroChargeWeaponAmmo === true) {
-             if (ammoStr !== '') ammoStr += '|';
-             ammoStr += '0';
-          }
+            }
+            if (zeroChargeWeaponAmmo === true) {
+                if (ammoStr !== '') ammoStr += '|';
+                ammoStr += '0';
+            }
+        }
     }
     //---------------------------------------------------//
     // - End
     if (ammoStr !== '') ammoStr = '[' + ammoStr + ']';
     return ammoStr;
 };
-
 Unco.AS.Window_ActorCommand_addCommand = Window_ActorCommand.prototype.addCommand;
 if (Imported.BOB_BattleCommandList === true) {
    Window_ActorCommand.prototype.addCommand = function(name, symbol, enabled, ext, icon) {
@@ -1632,19 +1674,25 @@ if (Imported.YEP_SkillCore === true) {
             //---------------------------------------------------//
             // - Item Cost
             for (var ammoId in skill.itemAmmoCost) {
-               var ammoId = parseInt(ammoId);
-               if (!isNaN(ammoId) && (ammoId > 0)) { 
-                  var ammoCost = parseInt(skill.itemAmmoCost[ammoId]);               
-                  this.changeTextColor(this.textColor(Unco.Param.ammoFontColor));
-                  var text = (ammoCost <= 0) ? '' : 'x' + String( $gameParty.getItemAmount($dataItems[ammoId]) );
-                  this.contents.fontSize = Unco.Param.ammoFontSize;
-                  this.drawText(text, x, y, dw, 'right');
-                  dw -= this.textWidth(text);
-                  this.resetFontSettings();
-                  if ($dataItems[ammoId].iconIndex > 0) {
-                     var iw = x + dw - Window_Base._iconWidth;
-                     this.drawIcon($dataItems[ammoId].iconIndex, iw, y + 2);
-                     dw -= Window_Base._iconWidth + 2;
+    var ammoId = parseInt(ammoId);
+    if (!isNaN(ammoId) && (ammoId > 0)) {
+        var ammoCost = parseInt(skill.itemAmmoCost[ammoId]);
+        
+        // ← ← ← ДОБАВЬ
+        var item = $dataItems[ammoId];
+        if (!item) continue;
+        // ← ← ←
+        
+        this.changeTextColor(this.textColor(Unco.Param.ammoFontColor));
+        var text = (ammoCost <= 0) ? '' : 'x' + String($gameParty.getItemAmount(item));
+        this.contents.fontSize = Unco.Param.ammoFontSize;
+        this.drawText(text, x, y, dw, 'right');
+        dw -= this.textWidth(text);
+        this.resetFontSettings();
+        if (item.iconIndex > 0) {
+            var iw = x + dw - Window_Base._iconWidth;
+            this.drawIcon(item.iconIndex, iw, y + 2);
+            dw -= Window_Base._iconWidth + 2;
                   }
                }
             }
