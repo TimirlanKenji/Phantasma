@@ -591,54 +591,84 @@ Game_Actor.prototype.equippableSlotsFor = function(item) {
 
 Unco.AS.Game_BattlerBase_canEquipArmor = Game_BattlerBase.prototype.canEquipArmor;
 Game_BattlerBase.prototype.canEquipArmor = function(item) {
-   if (typeof $dataArmors[item.id].isEquipAmmoForWeapon !== 'undefined') {
-      var ok = false;
-      if (this._equips[0].itemId() > 0) {
-         var EquippedWeaponId = ( (typeof $dataWeapons[this._equips[0].itemId()].baseItemId === 'undefined') ? this._equips[0].itemId() : $dataWeapons[this._equips[0].itemId()].baseItemId );
-         for (var weaponId in $dataArmors[item.id].isEquipAmmoForWeapon) {
-            weaponId = parseInt(weaponId);
-            var ammoCost = parseInt( $dataArmors[item.id].isEquipAmmoForWeapon[weaponId] );
-            ammoCost = (isNaN(ammoCost)) ? -1 : ammoCost ;
-            if ((weaponId === EquippedWeaponId) && (ammoCost > -1)) {
-               ok = true;
-               break;
+    // ← ← ← ПРОВЕРКА В САМОМ НАЧАЛЕ
+    if (!item) {
+        console.warn('[UNCO Ammo] Item is undefined in canEquipArmor');
+        return Unco.AS.Game_BattlerBase_canEquipArmor.call(this, item);
+    }
+    
+    if (!$dataArmors[item.id]) {
+        console.warn('[UNCO Ammo] Armor ID ' + item.id + ' not found in canEquipArmor');
+        return Unco.AS.Game_BattlerBase_canEquipArmor.call(this, item);
+    }
+    // ← ← ← КОНЕЦ ПРОВЕРКИ
+    
+    if (typeof $dataArmors[item.id].isEquipAmmoForWeapon !== 'undefined') {
+        var ok = false;
+        if (this._equips[0].itemId() > 0) {
+            var weapon = $dataWeapons[this._equips[0].itemId()];
+            if (weapon) {
+                var EquippedWeaponId = ((typeof weapon.baseItemId === 'undefined') ? this._equips[0].itemId() : weapon.baseItemId);
+                for (var weaponId in $dataArmors[item.id].isEquipAmmoForWeapon) {
+                    weaponId = parseInt(weaponId);
+                    var ammoCost = parseInt($dataArmors[item.id].isEquipAmmoForWeapon[weaponId]);
+                    ammoCost = (isNaN(ammoCost)) ? -1 : ammoCost;
+                    if ((weaponId === EquippedWeaponId) && (ammoCost > -1)) {
+                        ok = true;
+                        break;
+                    }
+                }
             }
-         }
-      }
-      if (ok === false) return false;
-   }
-   return Unco.AS.Game_BattlerBase_canEquipArmor.call(this,item);
+        }
+        if (ok === false) return false;
+    }
+    return Unco.AS.Game_BattlerBase_canEquipArmor.call(this, item);
 };
 
 Unco.AS.Game_BattlerBase_canEquipWeapon = Game_BattlerBase.prototype.canEquipWeapon;
 Game_BattlerBase.prototype.canEquipWeapon = function(item) {
-   if (typeof $dataWeapons[item.id].isWeaponAmmoForWeapon !== 'undefined') {
-      var ok = false;
-      var wantedWeaponId = ( (typeof $dataWeapons[item.id].baseItemId === 'undefined') ? item.id : $dataWeapons[item.id].baseItemId );
-      var EquippedWeaponId = 0;
-	  if (typeof this._equips[0].itemId != "undefined") {
-         if (this._equips[0].itemId() > 0) {
-            EquippedWeaponId = ( (typeof $dataWeapons[this._equips[0].itemId()].baseItemId === 'undefined') ? this._equips[0].itemId() : $dataWeapons[this._equips[0].itemId()].baseItemId );
-         }
-	  }
-      for (var weaponId in $dataWeapons[item.id].isWeaponAmmoForWeapon) {
-         weaponId = parseInt(weaponId);
-         var ammoCost = parseInt( $dataWeapons[item.id].isWeaponAmmoForWeapon[weaponId] );
-         ammoCost = (isNaN(ammoCost)) ? -1 : ammoCost ;
-         if (EquippedWeaponId > 0) {
-            if ((weaponId === EquippedWeaponId) && (ammoCost > -1)) {
-               ok = true;
-               break;
+    // ← ← ← ПРОВЕРКА В САМОМ НАЧАЛЕ
+    if (!item) {
+        console.warn('[UNCO Ammo] Item is undefined in canEquipWeapon');
+        return Unco.AS.Game_BattlerBase_canEquipWeapon.call(this, item);
+    }
+    
+    if (!$dataWeapons[item.id]) {
+        console.warn('[UNCO Ammo] Weapon ID ' + item.id + ' not found in canEquipWeapon');
+        return Unco.AS.Game_BattlerBase_canEquipWeapon.call(this, item);
+    }
+    // ← ← ← КОНЕЦ ПРОВЕРКИ
+    
+    if (typeof $dataWeapons[item.id].isWeaponAmmoForWeapon !== 'undefined') {
+        var ok = false;
+        var wantedWeaponId = ((typeof $dataWeapons[item.id].baseItemId === 'undefined') ? item.id : $dataWeapons[item.id].baseItemId);
+        var EquippedWeaponId = 0;
+        if (typeof this._equips[0].itemId != "undefined") {
+            if (this._equips[0].itemId() > 0) {
+                var weapon = $dataWeapons[this._equips[0].itemId()];
+                if (weapon) {
+                    EquippedWeaponId = ((typeof weapon.baseItemId === 'undefined') ? this._equips[0].itemId() : weapon.baseItemId);
+                }
             }
-         }
-         if (weaponId === wantedWeaponId) {
-            ok = true;
-            break;
-         }
-      }
-      if (ok === false) return false;
-   }
-   return Unco.AS.Game_BattlerBase_canEquipWeapon.call(this,item);
+        }
+        for (var weaponId in $dataWeapons[item.id].isWeaponAmmoForWeapon) {
+            weaponId = parseInt(weaponId);
+            var ammoCost = parseInt($dataWeapons[item.id].isWeaponAmmoForWeapon[weaponId]);
+            ammoCost = (isNaN(ammoCost)) ? -1 : ammoCost;
+            if (EquippedWeaponId > 0) {
+                if ((weaponId === EquippedWeaponId) && (ammoCost > -1)) {
+                    ok = true;
+                    break;
+                }
+            }
+            if (weaponId === wantedWeaponId) {
+                ok = true;
+                break;
+            }
+        }
+        if (ok === false) return false;
+    }
+    return Unco.AS.Game_BattlerBase_canEquipWeapon.call(this, item);
 };
 
 Game_Party.prototype.getItemAmount = function(baseItem) {

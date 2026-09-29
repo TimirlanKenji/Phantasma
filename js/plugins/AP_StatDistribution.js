@@ -1645,99 +1645,160 @@ Imported.AP_StatDistribution = true;
 
 
 	Window_Overview.prototype.drawActorParams = function(x, y) {
-		if (!this._actor) return;
-		var actor = this._actor;
-		var showGauges = eval(APHideGauges);
-		var x = x;
-		var y = y;
-		var actorClass = actor.currentClass();
-		if (this.useSmallVersion()) {
-			var gaugeWidth = eval(this._width / 2 - this.standardPadding() * 2);
-		} else {
-			var gaugeWidth = eval(this._width - this.standardPadding() * 2);
-		};
-		var drawn = 0;
-		// HP
-		if (eval(ShowHP)) {
-		var rate = this.hpRate(actor);
-		x = this.processNewColumn(x, y, drawn, 1);
-		drawn = this.processNewColumn(x, y, drawn, 2);
-		if (!showGauges) this.drawGauge(x, y + (this.lineHeight() * drawn), gaugeWidth, rate, this.textColor(HPColor1), this.textColor(HPColor2));
-		this.drawTextEx(HPVocab, x, y + (this.lineHeight() * drawn));
-		this.drawTextEx(String(actor.mhp), x + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.mhp)), y + (this.lineHeight() * drawn));
-		drawn += 1;
-		};
-		// MP
-		if (eval(ShowMP)) {
-		var rate = this.mpRate(actor);
-		x = this.processNewColumn(x, y, drawn, 1);
-		drawn = this.processNewColumn(x, y, drawn, 2);
-		if (!showGauges) this.drawGauge(x, y + (this.lineHeight() * drawn), gaugeWidth, rate, this.textColor(MPColor1), this.textColor(MPColor2));
-		this.drawTextEx(MPVocab, x, y + (this.lineHeight() * drawn));
-		this.drawTextEx(String(actor.mmp), x + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.mmp)), y + (this.lineHeight() * drawn));
-		drawn += 1;
-		};
-		// ATK
-		if (eval(ShowATK)) {
-		var rate = this.atkRate(actor);
-		x = this.processNewColumn(x, y, drawn, 1);
-		drawn = this.processNewColumn(x, y, drawn, 2);
-		if (!showGauges) this.drawGauge(x, y + (this.lineHeight() * drawn), gaugeWidth, rate, this.textColor(ATKColor1), this.textColor(ATKColor2));
-		this.drawTextEx(ATKVocab, x, y + (this.lineHeight() * drawn));
-		this.drawTextEx(String(actor.atk), x + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.atk)), y + (this.lineHeight() * drawn));
-		drawn += 1;
-		};
-		// DEF
-		if (eval(ShowDEF)) {
-		var rate = this.defRate(actor);
-		x = this.processNewColumn(x, y, drawn, 1);
-		drawn = this.processNewColumn(x, y, drawn, 2);
-		if (!showGauges) this.drawGauge(x, y + (this.lineHeight() * drawn), gaugeWidth, rate, this.textColor(DEFColor1), this.textColor(DEFColor2));
-		this.drawTextEx(DEFVocab, x, y + (this.lineHeight() * drawn));
-		this.drawTextEx(String(actor.def), x + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.def)), y + (this.lineHeight() * drawn));
-		drawn += 1;
-		};
-		// MAT
-		if (eval(ShowMAT)) {
-		var rate = this.matRate(actor);
-		x = this.processNewColumn(x, y, drawn, 1);
-		drawn = this.processNewColumn(x, y, drawn, 2);
-		if (!showGauges) this.drawGauge(x, y + (this.lineHeight() * drawn), gaugeWidth, rate, this.textColor(MATColor1), this.textColor(MATColor2));
-		this.drawTextEx(MATVocab, x, y + (this.lineHeight() * drawn));
-		this.drawTextEx(String(actor.mat), x + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.mat)), y + (this.lineHeight() * drawn));
-		drawn += 1;
-		};
-		// MDF
-		if (eval(ShowMDF)) {
-		var rate = this.mdfRate(actor);
-		x = this.processNewColumn(x, y, drawn, 1);
-		drawn = this.processNewColumn(x, y, drawn, 2);
-		if (!showGauges) this.drawGauge(x, y + (this.lineHeight() * drawn), gaugeWidth, rate, this.textColor(MDFColor1), this.textColor(MDFColor2));
-		this.drawTextEx(MDFVocab, x, y + (this.lineHeight() * drawn));
-		this.drawTextEx(String(actor.mdf), x + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.mdf)), y + (this.lineHeight() * drawn));
-		drawn += 1;
-		};
-		// AGI
-		if (eval(ShowAGI)) {
-		var rate = this.agiRate(actor);
-		x = this.processNewColumn(x, y, drawn, 1);
-		drawn = this.processNewColumn(x, y, drawn, 2);
-		if (!showGauges) this.drawGauge(x, y + (this.lineHeight() * drawn), gaugeWidth, rate, this.textColor(AGIColor1), this.textColor(AGIColor2));
-		this.drawTextEx(AGIVocab, x, y + (this.lineHeight() * drawn));
-		this.drawTextEx(String(actor.agi), x + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.agi)), y + (this.lineHeight() * drawn));
-		drawn += 1;
-		};
-		// LUK
-		if (eval(ShowLUK)) {
-		var rate = this.lukRate(actor);
-		x = this.processNewColumn(x, y, drawn, 1);
-		drawn = this.processNewColumn(x, y, drawn, 2);
-		if (!showGauges) this.drawGauge(x, y + (this.lineHeight() * drawn), gaugeWidth, rate, this.textColor(LUKColor1), this.textColor(LUKColor2));
-		this.drawTextEx(LUKVocab, x, y + (this.lineHeight() * drawn));
-		this.drawTextEx(String(actor.luk), x + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.luk)), y + (this.lineHeight() * drawn));
-		drawn += 1;
-		};
-	};
+    if (!this._actor) return;
+    var actor = this._actor;
+    var showGauges = eval(APHideGauges);
+    var x = x;
+    var y = y;
+    var actorClass = actor.currentClass();
+    
+    // ← ← ← ИЗМЕНЕНИЕ: делим ширину пополам для двух колонок
+    if (this.useSmallVersion()) {
+        var gaugeWidth = eval(this._width / 2 - this.standardPadding() * 2);
+    } else {
+        var gaugeWidth = eval(this._width / 2 - this.standardPadding() * 2);
+    }
+    
+    var drawn = 0;
+    var column = 0;
+    var maxInColumn = 4; // ← ← ← 4 характеристики в колонке
+    
+    // HP
+    if (eval(ShowHP)) {
+        var rate = this.hpRate(actor);
+        var currentX = x + (column * (gaugeWidth + this.standardPadding() * 4));
+        var currentY = y + (this.lineHeight() * drawn);
+        
+        if (!showGauges) this.drawGauge(currentX, currentY, gaugeWidth, rate, this.textColor(HPColor1), this.textColor(HPColor2));
+        this.drawTextEx(HPVocab, currentX, currentY);
+        this.drawTextEx(String(actor.mhp), currentX + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.mhp)), currentY);
+        
+        drawn += 1;
+        if (drawn >= maxInColumn) {
+            drawn = 0;
+            column += 1;
+        }
+    }
+    
+    // MP
+    if (eval(ShowMP)) {
+        var rate = this.mpRate(actor);
+        var currentX = x + (column * (gaugeWidth + this.standardPadding() * 4));
+        var currentY = y + (this.lineHeight() * drawn);
+        
+        if (!showGauges) this.drawGauge(currentX, currentY, gaugeWidth, rate, this.textColor(MPColor1), this.textColor(MPColor2));
+        this.drawTextEx(MPVocab, currentX, currentY);
+        this.drawTextEx(String(actor.mmp), currentX + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.mmp)), currentY);
+        
+        drawn += 1;
+        if (drawn >= maxInColumn) {
+            drawn = 0;
+            column += 1;
+        }
+    }
+    
+    // ATK
+    if (eval(ShowATK)) {
+        var rate = this.atkRate(actor);
+        var currentX = x + (column * (gaugeWidth + this.standardPadding() * 4));
+        var currentY = y + (this.lineHeight() * drawn);
+        
+        if (!showGauges) this.drawGauge(currentX, currentY, gaugeWidth, rate, this.textColor(ATKColor1), this.textColor(ATKColor2));
+        this.drawTextEx(ATKVocab, currentX, currentY);
+        this.drawTextEx(String(actor.atk), currentX + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.atk)), currentY);
+        
+        drawn += 1;
+        if (drawn >= maxInColumn) {
+            drawn = 0;
+            column += 1;
+        }
+    }
+    
+    // DEF
+    if (eval(ShowDEF)) {
+        var rate = this.defRate(actor);
+        var currentX = x + (column * (gaugeWidth + this.standardPadding() * 4));
+        var currentY = y + (this.lineHeight() * drawn);
+        
+        if (!showGauges) this.drawGauge(currentX, currentY, gaugeWidth, rate, this.textColor(DEFColor1), this.textColor(DEFColor2));
+        this.drawTextEx(DEFVocab, currentX, currentY);
+        this.drawTextEx(String(actor.def), currentX + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.def)), currentY);
+        
+        drawn += 1;
+        if (drawn >= maxInColumn) {
+            drawn = 0;
+            column += 1;
+        }
+    }
+    
+    // MAT
+    if (eval(ShowMAT)) {
+        var rate = this.matRate(actor);
+        var currentX = x + (column * (gaugeWidth + this.standardPadding() * 4));
+        var currentY = y + (this.lineHeight() * drawn);
+        
+        if (!showGauges) this.drawGauge(currentX, currentY, gaugeWidth, rate, this.textColor(MATColor1), this.textColor(MATColor2));
+        this.drawTextEx(MATVocab, currentX, currentY);
+        this.drawTextEx(String(actor.mat), currentX + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.mat)), currentY);
+        
+        drawn += 1;
+        if (drawn >= maxInColumn) {
+            drawn = 0;
+            column += 1;
+        }
+    }
+    
+    // MDF
+    if (eval(ShowMDF)) {
+        var rate = this.mdfRate(actor);
+        var currentX = x + (column * (gaugeWidth + this.standardPadding() * 4));
+        var currentY = y + (this.lineHeight() * drawn);
+        
+        if (!showGauges) this.drawGauge(currentX, currentY, gaugeWidth, rate, this.textColor(MDFColor1), this.textColor(MDFColor2));
+        this.drawTextEx(MDFVocab, currentX, currentY);
+        this.drawTextEx(String(actor.mdf), currentX + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.mdf)), currentY);
+        
+        drawn += 1;
+        if (drawn >= maxInColumn) {
+            drawn = 0;
+            column += 1;
+        }
+    }
+    
+    // AGI
+    if (eval(ShowAGI)) {
+        var rate = this.agiRate(actor);
+        var currentX = x + (column * (gaugeWidth + this.standardPadding() * 4));
+        var currentY = y + (this.lineHeight() * drawn);
+        
+        if (!showGauges) this.drawGauge(currentX, currentY, gaugeWidth, rate, this.textColor(AGIColor1), this.textColor(AGIColor2));
+        this.drawTextEx(AGIVocab, currentX, currentY);
+        this.drawTextEx(String(actor.agi), currentX + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.agi)), currentY);
+        
+        drawn += 1;
+        if (drawn >= maxInColumn) {
+            drawn = 0;
+            column += 1;
+        }
+    }
+    
+    // LUK
+    if (eval(ShowLUK)) {
+        var rate = this.lukRate(actor);
+        var currentX = x + (column * (gaugeWidth + this.standardPadding() * 4));
+        var currentY = y + (this.lineHeight() * drawn);
+        
+        if (!showGauges) this.drawGauge(currentX, currentY, gaugeWidth, rate, this.textColor(LUKColor1), this.textColor(LUKColor2));
+        this.drawTextEx(LUKVocab, currentX, currentY);
+        this.drawTextEx(String(actor.luk), currentX + gaugeWidth - this.standardPadding() * 2 - this.textWidth(String(actor.luk)), currentY);
+        
+        drawn += 1;
+        if (drawn >= maxInColumn) {
+            drawn = 0;
+            column += 1;
+        }
+    }
+};
 
 // Window_APSDConfirm
 function Window_APSDConfirm() {
