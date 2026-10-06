@@ -337,25 +337,31 @@ Gimmer_Core.Mirror.Scene_Map_prototype_update = Scene_Map.prototype.update;
 Scene_Map.prototype.update = function(){
     Gimmer_Core.Mirror.Scene_Map_prototype_update.call(this);
 }
-
 Spriteset_Map.prototype.createCharacters = function() {
     this._characterSprites = [];
     this._mirrorSprites = [];
     this._mirrorSprites.push();
     this._characterSprites.push();
     this._mirrorEvents = [];
+    
     $gameMap.events().forEach(function(event) {
         this._characterSprites.push(new Sprite_Character(event));
-        if($dataMap.events[event._eventId].meta['mirror']){
+        
+        // ← ← ← ДОБАВЛЕНА ПРОВЕРКА
+        var eventData = $dataMap.events[event._eventId];
+        if(eventData && eventData.meta && eventData.meta['mirror']){
             this._mirrorEvents.push(event);
         }
     }, this);
+    
     $gameMap.vehicles().forEach(function(vehicle) {
         this._characterSprites.push(new Sprite_Character(vehicle));
     }, this);
+    
     $gamePlayer.followers().reverseEach(function(follower) {
         this._characterSprites.push(new Sprite_Character(follower));
     }, this);
+    
     this._characterSprites.push(new Sprite_Character($gamePlayer));
 
     for (var i = 0; i < this._characterSprites.length; i++) {
@@ -373,7 +379,6 @@ Spriteset_Map.prototype.createCharacters = function() {
         }
     }
 };
-
 Gimmer_Core.Mirror._Spriteset_Map_prototype_updateTilemap = Spriteset_Map.prototype.updateTilemap;
 Spriteset_Map.prototype.updateTilemap = function (){
     Gimmer_Core.Mirror._Spriteset_Map_prototype_updateTilemap.call(this);
